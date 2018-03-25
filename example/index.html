@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>example</title>
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <style>
+    body {
+      padding-top: 5rem;
+    }
+
+    .starter-template {
+      padding: 3rem 1.5rem;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#">TaskLoader example</a>
+</nav>
+
+<main role="main" class="container">
+
+  <div class="starter-template" id="app">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Task</th>
+        <th scope="col">assetCount</th>
+        <th scope="col">Progress</th>
+        <th scope="col">Completed</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="(task, index) in tasks" :key="index">
+        <td scope="row" v-text="index + 1"></td>
+        <td v-text="task.type"></td>
+        <td v-text="task.assets.length"></td>
+        <td v-text="">
+          <div class="progress">
+            <div
+              class="progress-bar"
+              role="progressbar"
+              :aria-valuenow="Math.round(task.progress * 100)"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              :style="`width: ${Math.round(task.progress * 100)}%`"
+            ></div>
+          </div>
+        </td>
+        <td v-text="task.progress >= 1 ? '✓': '✖'"></td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <th colspan="4" scope="row">Total Progress</th>
+        <td v-text="Math.round(totalProgress * 100)"></td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+
+</main><!-- /.container -->
+</body>
+<script src="/main.js"></script>
+</html>
