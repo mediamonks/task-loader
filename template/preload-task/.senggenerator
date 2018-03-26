@@ -1,0 +1,11 @@
+{
+  "destination": "./src/lib/util/preload",
+  "variables": [
+    {
+      "name": "assetType",
+      "type": "string",
+      "message": "What is the type of your asset (for example: HTMLImageElement)",
+      "default": "any"
+    }
+  ]
+}
