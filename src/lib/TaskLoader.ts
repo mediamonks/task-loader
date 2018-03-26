@@ -84,8 +84,6 @@ export default class TaskLoader extends EventDispatcher {
         this.taskProgress = 0;
         // Up the completed task counter
         this.tasksCompleted = this.taskCount * progress;
-        // Notify about the completion
-        this.update();
       },
     )
       .then(() => tasks.forEach(task => task.dispose()))
@@ -111,8 +109,6 @@ export default class TaskLoader extends EventDispatcher {
     this.taskCount = 0;
     this.tasksCompleted = 0;
     this.taskProgress = 0;
-
-    this.update();
   }
 
   /**

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>LoadScriptTask | task-loader</title>
+	<title>LoadHowlerAudioTask | task-loader</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="loadscripttask.html">LoadScriptTask</a>
+					<a href="loadhowleraudiotask.html">LoadHowlerAudioTask</a>
 				</li>
 			</ul>
-			<h1>Class LoadScriptTask</h1>
+			<h1>Class LoadHowlerAudioTask</h1>
 		</div>
 	</div>
 </header>
@@ -70,10 +70,10 @@
 				<div class="tsd-comment tsd-typography">
 					<dl class="tsd-comment-tags">
 						<dt>description</dt>
-						<dd><p>Load external script in the TaskLoader</p>
+						<dd><p>Load howler audio in the TaskLoader</p>
 							<p>Example:</p>
-							<pre><code class="lang-typescript"> <span class="hljs-keyword">new</span> LoadScriptTask({
-     assets: [<span class="hljs-string">'path/to/script.js'</span>],
+							<pre><code class="lang-typescript"> <span class="hljs-keyword">new</span> LoadHowlerAudioTask({
+     assets: [<span class="hljs-string">'path/to/file.mp3'</span>],
      onAssetLoaded: <span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(result),
  })
 </code></pre>
@@ -85,10 +85,10 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="loadtask.html" class="tsd-signature-type">LoadTask</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">HTMLScriptElement</span><span class="tsd-signature-symbol">&gt;</span>
+						<a href="loadtask.html" class="tsd-signature-type">LoadTask</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Howl</span><span class="tsd-signature-symbol">&gt;</span>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">LoadScriptTask</span>
+								<span class="target">LoadHowlerAudioTask</span>
 							</li>
 						</ul>
 					</li>
@@ -107,29 +107,24 @@
 						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="loadscripttask.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="loadhowleraudiotask.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-inherited tsd-is-private-protected">
+						<section class="tsd-index-section tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="loadscripttask.html#batches" class="tsd-kind-icon">batches</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="loadhowleraudiotask.html#batches" class="tsd-kind-icon">batches</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="loadhowleraudiotask.html#options" class="tsd-kind-icon">options</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="loadscripttask.html#createbatches" class="tsd-kind-icon">create<wbr>Batches</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="loadscripttask.html#dispose" class="tsd-kind-icon">dispose</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="loadscripttask.html#isdisposed" class="tsd-kind-icon">is<wbr>Disposed</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="loadscripttask.html#load" class="tsd-kind-icon">load</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-private"><a href="loadscripttask.html#loadasset" class="tsd-kind-icon">load<wbr>Asset</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-inherited tsd-is-private-protected">
-							<h3>Object literals</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-object-literal tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="loadscripttask.html#options" class="tsd-kind-icon">options</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="loadhowleraudiotask.html#createbatches" class="tsd-kind-icon">create<wbr>Batches</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="loadhowleraudiotask.html#dispose" class="tsd-kind-icon">dispose</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="loadhowleraudiotask.html#isdisposed" class="tsd-kind-icon">is<wbr>Disposed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="loadhowleraudiotask.html#load" class="tsd-kind-icon">load</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-private"><a href="loadhowleraudiotask.html#loadasset" class="tsd-kind-icon">load<wbr>Asset</a></li>
 							</ul>
 						</section>
 					</div>
@@ -141,7 +136,7 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Load<wbr>Script<wbr>Task<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/iloadtaskoptions.html" class="tsd-signature-type">ILoadTaskOptions</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">HTMLScriptElement</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="loadscripttask.html" class="tsd-signature-type">LoadScriptTask</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Load<wbr>Howler<wbr>Audio<wbr>Task<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/iloadtaskoptions.html" class="tsd-signature-type">ILoadTaskOptions</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Howl</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="loadhowleraudiotask.html" class="tsd-signature-type">LoadHowlerAudioTask</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -154,15 +149,15 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>options: <a href="../interfaces/iloadtaskoptions.html" class="tsd-signature-type">ILoadTaskOptions</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">HTMLScriptElement</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>options: <a href="../interfaces/iloadtaskoptions.html" class="tsd-signature-type">ILoadTaskOptions</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Howl</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="loadscripttask.html" class="tsd-signature-type">LoadScriptTask</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="loadhowleraudiotask.html" class="tsd-signature-type">LoadHowlerAudioTask</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-private-protected">
+			<section class="tsd-panel-group tsd-member-group tsd-is-private-protected">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="batches" class="tsd-anchor"></a>
@@ -184,6 +179,17 @@
 							</dd>
 						</dl>
 					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<a name="options" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> options</h3>
+					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <a href="../interfaces/iloadhowleraudiotaskoptions.html" class="tsd-signature-type">ILoadHowlerAudioTaskOptions</a></div>
+					<aside class="tsd-sources">
+						<p>Overrides <a href="loadtask.html">LoadTask</a>.<a href="loadtask.html#options">options</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/task/LoadHowlerAudioTask.ts#L17">lib/task/LoadHowlerAudioTask.ts:17</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -258,7 +264,7 @@
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>After <a href="loadscripttask.html#dispose">dispose</a> has been called, this method returns true.
+									<p>After <a href="loadhowleraudiotask.html#dispose">dispose</a> has been called, this method returns true.
 									Use this method to determine whether dispose() should be run again.</p>
 								</div>
 							</div>
@@ -319,20 +325,20 @@
 					<a name="loadasset" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> load<wbr>Asset</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Asset<span class="tsd-signature-symbol">(</span>src<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">HTMLScriptElement</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Asset<span class="tsd-signature-symbol">(</span>src<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Howl</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides <a href="loadtask.html">LoadTask</a>.<a href="loadtask.html#loadasset">loadAsset</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/task/LoadScriptTask.ts#L21">lib/task/LoadScriptTask.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/task/LoadHowlerAudioTask.ts#L25">lib/task/LoadHowlerAudioTask.ts:25</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>method</dt>
-									<dd><p>loadAsset</p>
+									<dd><p>loadImage</p>
 									</dd>
 								</dl>
 							</div>
@@ -342,70 +348,9 @@
 									<h5>src: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">HTMLScriptElement</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Howl</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-private-protected">
-				<h2>Object literals</h2>
-				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-					<a name="options" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> options</h3>
-					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="loadtask.html">LoadTask</a>.<a href="loadtask.html#options">options</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/task/AbstractLoadTask.ts#L17">lib/task/AbstractLoadTask.ts:17</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<dl class="tsd-comment-tags">
-							<dt>description</dt>
-							<dd><p>The default options for a task</p>
-							</dd>
-						</dl>
-					</div>
-					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="options.assets" class="tsd-anchor"></a>
-						<h3>assets</h3>
-						<div class="tsd-signature tsd-kind-icon">assets<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/task/AbstractLoadTask.ts#L18">lib/task/AbstractLoadTask.ts:18</a></li>
-							</ul>
-						</aside>
-					</section>
-					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="options.batchsize" class="tsd-anchor"></a>
-						<h3>batch<wbr>Size</h3>
-						<div class="tsd-signature tsd-kind-icon">batch<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;1</span></div>
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/task/AbstractLoadTask.ts#L19">lib/task/AbstractLoadTask.ts:19</a></li>
-							</ul>
-						</aside>
-					</section>
-					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="options.cachenamespace" class="tsd-anchor"></a>
-						<h3>cache<wbr>Name<wbr>Space</h3>
-						<div class="tsd-signature tsd-kind-icon">cache<wbr>Name<wbr>Space<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> =&nbsp;null</span></div>
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/task/AbstractLoadTask.ts#L20">lib/task/AbstractLoadTask.ts:20</a></li>
-							</ul>
-						</aside>
-					</section>
-					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="options.cached" class="tsd-anchor"></a>
-						<h3>cached</h3>
-						<div class="tsd-signature tsd-kind-icon">cached<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/task/AbstractLoadTask.ts#L21">lib/task/AbstractLoadTask.ts:21</a></li>
-							</ul>
-						</aside>
-					</section>
 				</section>
 			</section>
 		</div>
@@ -422,48 +367,48 @@
 					<li class=" tsd-kind-class tsd-is-not-exported">
 						<a href="cachemanager.html" class="tsd-kind-icon">Cache<wbr>Manager</a>
 					</li>
-					<li class=" tsd-kind-class">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class">
 						<a href="loadhowleraudiotask.html" class="tsd-kind-icon">Load<wbr>Howler<wbr>Audio<wbr>Task</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+								<a href="loadhowleraudiotask.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="loadhowleraudiotask.html#batches" class="tsd-kind-icon">batches</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+								<a href="loadhowleraudiotask.html#options" class="tsd-kind-icon">options</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="loadhowleraudiotask.html#createbatches" class="tsd-kind-icon">create<wbr>Batches</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
+								<a href="loadhowleraudiotask.html#dispose" class="tsd-kind-icon">dispose</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="loadhowleraudiotask.html#isdisposed" class="tsd-kind-icon">is<wbr>Disposed</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="loadhowleraudiotask.html#load" class="tsd-kind-icon">load</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-private">
+								<a href="loadhowleraudiotask.html#loadasset" class="tsd-kind-icon">load<wbr>Asset</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="loadimagetask.html" class="tsd-kind-icon">Load<wbr>Image<wbr>Task</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="loadjsontask.html" class="tsd-kind-icon">Load<wbr>Json<wbr>Task</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-class">
+					<li class=" tsd-kind-class">
 						<a href="loadscripttask.html" class="tsd-kind-icon">Load<wbr>Script<wbr>Task</a>
-						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
-								<a href="loadscripttask.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="loadscripttask.html#batches" class="tsd-kind-icon">batches</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="loadscripttask.html#createbatches" class="tsd-kind-icon">create<wbr>Batches</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-								<a href="loadscripttask.html#dispose" class="tsd-kind-icon">dispose</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="loadscripttask.html#isdisposed" class="tsd-kind-icon">is<wbr>Disposed</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="loadscripttask.html#load" class="tsd-kind-icon">load</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-private">
-								<a href="loadscripttask.html#loadasset" class="tsd-kind-icon">load<wbr>Asset</a>
-							</li>
-							<li class=" tsd-kind-object-literal tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="loadscripttask.html#options" class="tsd-kind-icon">options</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="loadtask.html" class="tsd-kind-icon">Load<wbr>Task</a>
 					</li>

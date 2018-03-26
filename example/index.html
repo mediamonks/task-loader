@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>example</title>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css">
+  <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css">-->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css">
   <style>
     body {
-      padding-top: 0;
+      padding-top: 25px;
     }
+
     .icon {
       width: 20px;
       height: 20px;
@@ -18,22 +20,31 @@
     .progress {
       margin: 10px 0;
     }
+
+    section {
+      margin: 50px 0;
+    }
   </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default navbar-fixed-top">
   <a class="navbar-brand" href="#">TaskLoader example</a>
 </nav>
 
-<main role="main" class="container">
-
-  <div class="starter-template" id="app">
+<main role="main" class="container" id="app">
+  <section>
+    <h3 id="example">Example</h3>
+    <div class="alert alert-info">
+      <strong>Note:</strong> <a class="alert-link" target="_blank"
+                                href="https://developers.google.com/web/tools/chrome-devtools/network-performance/reference#throttling">Throttle
+      your network</a> to see the loading effect.
+    </div>
     <table class="table table-striped">
       <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Task</th>
-        <th scope="col">assetCount</th>
+        <th scope="col">assets</th>
         <th scope="col">Progress</th>
         <th scope="col">Completed</th>
       </tr>
@@ -41,8 +52,12 @@
       <tbody>
       <tr v-for="(task, index) in tasks" :key="index">
         <td scope="row" v-text="index + 1"></td>
-        <td v-text="task.type"></td>
-        <td v-text="task.assets.length"></td>
+        <td v-text="task.constructor.name"></td>
+        <td>
+          <ul>
+            <li v-for="(asset, index) in task.options.assets" :key="index">{{asset}}</li>
+          </ul>
+        </td>
         <td v-text="">
           <div class="progress">
             <div
@@ -56,8 +71,8 @@
           </div>
         </td>
         <td>
-          <span class="text-success icon glyphicon glyphicon-ok" v-if="task.progress >= 1" ></span>
-          <span class="text-danger icon glyphicon glyphicon-remove" v-if="task.progress < 1" ></span>
+          <span class="text-success icon glyphicon glyphicon-ok" v-if="task.progress >= 1"></span>
+          <span class="text-danger icon glyphicon glyphicon-remove" v-if="task.progress < 1"></span>
         </td>
       </tr>
       </tbody>
@@ -68,9 +83,20 @@
       </tr>
       </tfoot>
     </table>
-  </div>
-
-</main><!-- /.container -->
+    <button :disabled="started" @click="handleStartClick" class="btn btn-primary">
+      {{ started ? totalProgress >= 1 ? 'Done' : 'Running...' : 'Start example'}}
+    </button>
+  </section>
+  <section v-if="events.length">
+    <h3 id="events">Events:</h3>
+    <ul class="list-group">
+      <li class="list-group-item" v-for="(event, index) in events">
+        <h5 class="list-group-item-heading"><span class="text-primary icon glyphicon glyphicon-chevron-right"></span>{{event.eventType}}</h5>
+        <pre v-if="event.data">{{event.data}}</pre>
+      </li>
+    </ul>
+  </section>
+</main>
 </body>
 <script src="/main.js"></script>
 </html>

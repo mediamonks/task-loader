@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IAssetLoadedResponse | task-loader</title>
+	<title>ILoadHowlerAudioTaskOptions | task-loader</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,29 +56,35 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="iassetloadedresponse.html">IAssetLoadedResponse</a>
+					<a href="iloadhowleraudiotaskoptions.html">ILoadHowlerAudioTaskOptions</a>
 				</li>
 			</ul>
-			<h1>Interface IAssetLoadedResponse&lt;T&gt;</h1>
+			<h1>Interface ILoadHowlerAudioTaskOptions</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-type-parameters">
-				<h3>Type parameters</h3>
-				<ul class="tsd-type-parameters">
-					<li>
-						<h4>T</h4>
-					</li>
-				</ul>
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<dl class="tsd-comment-tags">
+						<dt>description</dt>
+						<dd><p>Howler has the option for multiple formats like mp3, ogg, mp4 etc</p>
+						</dd>
+					</dl>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IAssetLoadedResponse</span>
+						<a href="iloadtaskoptions.html" class="tsd-signature-type">ILoadTaskOptions</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Howl</span><span class="tsd-signature-symbol">&gt;</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">ILoadHowlerAudioTaskOptions</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -86,37 +92,107 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iassetloadedresponse.html#asset" class="tsd-kind-icon">asset</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iassetloadedresponse.html#index" class="tsd-kind-icon">index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="iloadhowleraudiotaskoptions.html#assets" class="tsd-kind-icon">assets</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="iloadhowleraudiotaskoptions.html#batchsize" class="tsd-kind-icon">batch<wbr>Size</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="iloadhowleraudiotaskoptions.html#cachenamespace" class="tsd-kind-icon">cache<wbr>Name<wbr>Space</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="iloadhowleraudiotaskoptions.html#cached" class="tsd-kind-icon">cached</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="iloadhowleraudiotaskoptions.html#format" class="tsd-kind-icon">format</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="iloadhowleraudiotaskoptions.html#onassetloaded" class="tsd-kind-icon">on<wbr>Asset<wbr>Loaded</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="asset" class="tsd-anchor"></a>
-					<h3>asset</h3>
-					<div class="tsd-signature tsd-kind-icon">asset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+					<a name="assets" class="tsd-anchor"></a>
+					<h3>assets</h3>
+					<div class="tsd-signature tsd-kind-icon">assets<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="iloadtaskoptions.html">ILoadTaskOptions</a>.<a href="iloadtaskoptions.html#assets">assets</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/interface/IAssetLoadedResponse.ts#L2">lib/interface/IAssetLoadedResponse.ts:2</a></li>
+							<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/interface/ILoadTaskOptions.ts#L4">lib/interface/ILoadTaskOptions.ts:4</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="index" class="tsd-anchor"></a>
-					<h3>index</h3>
-					<div class="tsd-signature tsd-kind-icon">index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+					<a name="batchsize" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> batch<wbr>Size</h3>
+					<div class="tsd-signature tsd-kind-icon">batch<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="iloadtaskoptions.html">ILoadTaskOptions</a>.<a href="iloadtaskoptions.html#batchsize">batchSize</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/interface/IAssetLoadedResponse.ts#L3">lib/interface/IAssetLoadedResponse.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/interface/ILoadTaskOptions.ts#L5">lib/interface/ILoadTaskOptions.ts:5</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+					<a name="cachenamespace" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> cache<wbr>Name<wbr>Space</h3>
+					<div class="tsd-signature tsd-kind-icon">cache<wbr>Name<wbr>Space<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="iloadtaskoptions.html">ILoadTaskOptions</a>.<a href="iloadtaskoptions.html#cachenamespace">cacheNameSpace</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/interface/ILoadTaskOptions.ts#L7">lib/interface/ILoadTaskOptions.ts:7</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+					<a name="cached" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> cached</h3>
+					<div class="tsd-signature tsd-kind-icon">cached<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="iloadtaskoptions.html">ILoadTaskOptions</a>.<a href="iloadtaskoptions.html#cached">cached</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/interface/ILoadTaskOptions.ts#L6">lib/interface/ILoadTaskOptions.ts:6</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="format" class="tsd-anchor"></a>
+					<h3>format</h3>
+					<div class="tsd-signature tsd-kind-icon">format<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/task/LoadHowlerAudioTask.ts#L46">lib/task/LoadHowlerAudioTask.ts:46</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+					<a name="onassetloaded" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> on<wbr>Asset<wbr>Loaded</h3>
+					<div class="tsd-signature tsd-kind-icon">on<wbr>Asset<wbr>Loaded<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="iloadtaskoptions.html">ILoadTaskOptions</a>.<a href="iloadtaskoptions.html#onassetloaded">onAssetLoaded</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/interface/ILoadTaskOptions.ts#L8">lib/interface/ILoadTaskOptions.ts:8</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>result<span class="tsd-signature-symbol">: </span><a href="iassetloadedresponse.html" class="tsd-signature-type">IAssetLoadedResponse</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Howl</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>result: <a href="iassetloadedresponse.html" class="tsd-signature-type">IAssetLoadedResponse</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Howl</span><span class="tsd-signature-symbol">&gt;</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -157,30 +233,42 @@
 					<li class=" tsd-kind-class">
 						<a href="../classes/taskloaderevent.html" class="tsd-kind-icon">Task<wbr>Loader<wbr>Event</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface tsd-has-type-parameter">
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="iassetloadedresponse.html" class="tsd-kind-icon">IAsset<wbr>Loaded<wbr>Response</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iassetloadedresponse.html#asset" class="tsd-kind-icon">asset</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iassetloadedresponse.html#index" class="tsd-kind-icon">index</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="ibatch.html" class="tsd-kind-icon">IBatch</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="icacheobject.html" class="tsd-kind-icon">ICache<wbr>Object</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-is-not-exported">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-is-not-exported">
 						<a href="iloadhowleraudiotaskoptions.html" class="tsd-kind-icon">ILoad<wbr>Howler<wbr>Audio<wbr>Task<wbr>Options</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+								<a href="iloadhowleraudiotaskoptions.html#assets" class="tsd-kind-icon">assets</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+								<a href="iloadhowleraudiotaskoptions.html#batchsize" class="tsd-kind-icon">batch<wbr>Size</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+								<a href="iloadhowleraudiotaskoptions.html#cachenamespace" class="tsd-kind-icon">cache<wbr>Name<wbr>Space</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+								<a href="iloadhowleraudiotaskoptions.html#cached" class="tsd-kind-icon">cached</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="iloadhowleraudiotaskoptions.html#format" class="tsd-kind-icon">format</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+								<a href="iloadhowleraudiotaskoptions.html#onassetloaded" class="tsd-kind-icon">on<wbr>Asset<wbr>Loaded</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="iloadtaskoptions.html" class="tsd-kind-icon">ILoad<wbr>Task<wbr>Options</a>
 					</li>

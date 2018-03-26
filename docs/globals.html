@@ -71,6 +71,7 @@
 							<h3>Classes</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-class tsd-is-not-exported"><a href="classes/cachemanager.html" class="tsd-kind-icon">Cache<wbr>Manager</a></li>
+								<li class="tsd-kind-class"><a href="classes/loadhowleraudiotask.html" class="tsd-kind-icon">Load<wbr>Howler<wbr>Audio<wbr>Task</a></li>
 								<li class="tsd-kind-class"><a href="classes/loadimagetask.html" class="tsd-kind-icon">Load<wbr>Image<wbr>Task</a></li>
 								<li class="tsd-kind-class"><a href="classes/loadjsontask.html" class="tsd-kind-icon">Load<wbr>Json<wbr>Task</a></li>
 								<li class="tsd-kind-class"><a href="classes/loadscripttask.html" class="tsd-kind-icon">Load<wbr>Script<wbr>Task</a></li>
@@ -86,6 +87,7 @@
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/iassetloadedresponse.html" class="tsd-kind-icon">IAsset<wbr>Loaded<wbr>Response</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/ibatch.html" class="tsd-kind-icon">IBatch</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/icacheobject.html" class="tsd-kind-icon">ICache<wbr>Object</a></li>
+								<li class="tsd-kind-interface tsd-is-not-exported"><a href="interfaces/iloadhowleraudiotaskoptions.html" class="tsd-kind-icon">ILoad<wbr>Howler<wbr>Audio<wbr>Task<wbr>Options</a></li>
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/iloadtaskoptions.html" class="tsd-kind-icon">ILoad<wbr>Task<wbr>Options</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/itaskloadereventdata.html" class="tsd-kind-icon">ITask<wbr>Loader<wbr>Event<wbr>Data</a></li>
 							</ul>
@@ -94,6 +96,18 @@
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-variable"><a href="globals.html#cachemanager" class="tsd-kind-icon">cache<wbr>Manager</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function"><a href="globals.html#sequentialpromises" class="tsd-kind-icon">sequential<wbr>Promises</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-is-not-exported"><a href="globals.html#state" class="tsd-kind-icon">state</a></li>
 							</ul>
 						</section>
 					</div>
@@ -107,9 +121,116 @@
 					<div class="tsd-signature tsd-kind-icon">cache<wbr>Manager<span class="tsd-signature-symbol">:</span> <a href="classes/cachemanager.html" class="tsd-signature-type">CacheManager</a><span class="tsd-signature-symbol"> =&nbsp;new CacheManager()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/CacheManager.ts:92</li>
+							<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/CacheManager.ts#L92">lib/CacheManager.ts:92</a></li>
 						</ul>
 					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="sequentialpromises" class="tsd-anchor"></a>
+					<h3>sequential<wbr>Promises</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">sequential<wbr>Promises<span class="tsd-signature-symbol">(</span>promises<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">&gt;</span>, update<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/util/sequentialPromises.ts#L21">lib/util/sequentialPromises.ts:21</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>method</dt>
+									<dd><p>sequentialPromises</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>promises: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> update: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>progress<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>progress: <span class="tsd-signature-type">number</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>This method is like Promise.all() except this one wait for the previous promise to be completed before starting the
+							new promise. It also dispatches the progress back to the initial caller so you can see how far the chain is.</p>
+							<pre><code class="lang-typescript">sequentialPromises(
+     [
+         <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> setTimeout(resolve, <span class="hljs-number">1000</span>)),
+         <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> setTimeout(resolve, <span class="hljs-number">1000</span>)),
+     ],
+     <span class="hljs-function"><span class="hljs-params">progress</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Progress update method: <span class="hljs-subst">${ progress }</span>`</span>)
+ ).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'All promises are done);</span>
+</code></pre>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-is-not-exported">
+					<a name="state" class="tsd-anchor"></a>
+					<h3>state</h3>
+					<div class="tsd-signature tsd-kind-icon">state<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/task/LoadHowlerAudioTask.ts#L49">lib/task/LoadHowlerAudioTask.ts:49</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="state.loaded" class="tsd-anchor"></a>
+						<h3>LOADED</h3>
+						<div class="tsd-signature tsd-kind-icon">LOADED<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;loaded&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/task/LoadHowlerAudioTask.ts#L52">lib/task/LoadHowlerAudioTask.ts:52</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="state.loading" class="tsd-anchor"></a>
+						<h3>LOADING</h3>
+						<div class="tsd-signature tsd-kind-icon">LOADING<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;loading&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/task/LoadHowlerAudioTask.ts#L51">lib/task/LoadHowlerAudioTask.ts:51</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="state.unloaded" class="tsd-anchor"></a>
+						<h3>UNLOADED</h3>
+						<div class="tsd-signature tsd-kind-icon">UNLOADED<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;unloaded&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/larsvanbraam/task-loader/blob/5f0a580/src/lib/task/LoadHowlerAudioTask.ts#L50">lib/task/LoadHowlerAudioTask.ts:50</a></li>
+							</ul>
+						</aside>
+					</section>
 				</section>
 			</section>
 		</div>
@@ -125,6 +246,9 @@
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-is-not-exported">
 						<a href="classes/cachemanager.html" class="tsd-kind-icon">Cache<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/loadhowleraudiotask.html" class="tsd-kind-icon">Load<wbr>Howler<wbr>Audio<wbr>Task</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/loadimagetask.html" class="tsd-kind-icon">Load<wbr>Image<wbr>Task</a>
@@ -156,6 +280,9 @@
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/icacheobject.html" class="tsd-kind-icon">ICache<wbr>Object</a>
 					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/iloadhowleraudiotaskoptions.html" class="tsd-kind-icon">ILoad<wbr>Howler<wbr>Audio<wbr>Task<wbr>Options</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/iloadtaskoptions.html" class="tsd-kind-icon">ILoad<wbr>Task<wbr>Options</a>
 					</li>
@@ -164,6 +291,12 @@
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#cachemanager" class="tsd-kind-icon">cache<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#sequentialpromises" class="tsd-kind-icon">sequential<wbr>Promises</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#state" class="tsd-kind-icon">state</a>
 					</li>
 				</ul>
 			</nav>

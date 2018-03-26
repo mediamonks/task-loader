@@ -1,77 +1,90 @@
 import Vue from 'vue/dist/vue.esm';
 
+import LoadHowlerAudioTask from '../../src/lib/task/LoadHowlerAudioTask';
 import LoadImageTask from '../../src/lib/task/LoadImageTask';
+import LoadJsonTask from '../../src/lib/task/LoadJsonTask';
+import LoadScriptTask from '../../src/lib/task/LoadScriptTask';
 import LoadVideoTask from '../../src/lib/task/LoadVideoTask';
 import TaskLoader from '../../src/lib/TaskLoader';
 import TaskLoaderEvent from '../../src/lib/event/TaskLoaderEvent';
 
-const app = new Vue({
+/* eslint-disable no-new */
+new Vue({
   el: '#app',
   data: {
+    started: false,
+    events: [],
     totalProgress: 0,
     tasks: [
       {
-        type: 'LoadImageTask',
         constructor: LoadImageTask,
         progress: 0,
-        assets: [
-          `https://picsum.photos/200/300/?random=1`,
-          `https://picsum.photos/200/300/?random=2`,
-          `https://picsum.photos/200/300/?random=3`,
-          `https://picsum.photos/200/300/?random=4`,
-          `https://picsum.photos/200/300/?random=5`,
-          `https://picsum.photos/200/300/?random=6`,
-        ],
+        options: {
+          assets: ['./static/dummy-image.jpeg'],
+        },
       },
       {
-        type: 'LoadImageTask',
-        constructor: LoadImageTask,
-        progress: 0,
-        assets: [
-          `https://picsum.photos/200/300/?random=7`,
-          `https://picsum.photos/200/300/?random=8`,
-          `https://picsum.photos/200/300/?random=9`,
-          `https://picsum.photos/200/300/?random=10`,
-          `https://picsum.photos/200/300/?random=11`,
-          `https://picsum.photos/200/300/?random=12`,
-        ],
-      },
-      {
-        type: 'LoadVideoTask',
         constructor: LoadVideoTask,
         progress: 0,
-        assets: [`./static/dummy-video.mp4`],
+        options: {
+          assets: ['./static/dummy-video.mp4'],
+        },
+      },
+      {
+        constructor: LoadJsonTask,
+        progress: 0,
+        options: {
+          assets: ['./static/dummy-json.json'],
+        },
+      },
+      {
+        constructor: LoadScriptTask,
+        progress: 0,
+        options: {
+          assets: ['./static/dummy-script.js'],
+        },
+      },
+      {
+        constructor: LoadHowlerAudioTask,
+        progress: 0,
+        options: {
+          assets: ['./static/dummy-audio.{format}'],
+          format: ['mp3'],
+        },
       },
     ],
   },
   created() {
     this.taskLoader = new TaskLoader();
-    this.taskLoader.addEventListener(TaskLoaderEvent.START, this.handleStart);
+    this.taskLoader.addEventListener(TaskLoaderEvent.START, this.handleEvent);
     this.taskLoader.addEventListener(TaskLoaderEvent.UPDATE, this.handleUpdate);
-    this.taskLoader.addEventListener(TaskLoaderEvent.COMPLETE, this.handleComplete);
-  },
-  mounted() {
-    const loadTasks = this.tasks.map(
-      task =>
-        new task.constructor({
-          assets: task.assets,
-          onAssetLoaded: result => {
-            task.progress = (result.index + 1) / task.assets.length; // eslint-disable-line
-          },
-        }),
-    );
-    this.taskLoader.loadTasks(loadTasks);
+    this.taskLoader.addEventListener(TaskLoaderEvent.COMPLETE, this.handleEvent);
   },
   methods: {
-    handleStart(event) {
-      console.log('start', event);
+    handleStartClick() {
+      this.started = true;
+      const tasks = this.tasks.map(
+        task =>
+          new task.constructor(
+            Object.assign(task.options, {
+              onAssetLoaded: result => this.handleAssetLoaded(result, task),
+            }),
+          ),
+      );
+      this.taskLoader.loadTasks(tasks);
+    },
+    handleAssetLoaded({ index }, task) {
+      task.progress = (index + 1) / task.options.assets.length; // eslint-disable-line
+    },
+    handleEvent(event) {
+      this.events.unshift({
+        eventType: event.type,
+        data: event.data,
+      });
     },
     handleUpdate(event) {
       this.totalProgress = event.data.progress;
-    },
-    handleComplete(event) {
-      console.log('complete', event);
+      this.handleEvent(event);
     },
   },
 });
-console.log(app);
