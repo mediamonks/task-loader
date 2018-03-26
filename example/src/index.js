@@ -59,6 +59,7 @@ new Vue({
     this.taskLoader.addEventListener(TaskLoaderEvent.START, this.handleEvent);
     this.taskLoader.addEventListener(TaskLoaderEvent.UPDATE, this.handleUpdate);
     this.taskLoader.addEventListener(TaskLoaderEvent.COMPLETE, this.handleEvent);
+    this.taskLoader.addEventListener(TaskLoaderEvent.FAILED, this.handleEvent);
   },
   methods: {
     handleStartClick() {

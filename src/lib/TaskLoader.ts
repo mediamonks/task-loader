@@ -87,7 +87,11 @@ export default class TaskLoader extends EventDispatcher {
       },
     )
       .then(() => tasks.forEach(task => task.dispose()))
-      .then(() => this.dispatchEvent(new TaskLoaderEvent(TaskLoaderEvent.COMPLETE)));
+      .then(() => this.dispatchEvent(new TaskLoaderEvent(TaskLoaderEvent.COMPLETE)))
+      .catch(() => {
+        this.dispatchEvent(new TaskLoaderEvent(TaskLoaderEvent.FAILED));
+        throw new Error('Loading tasks failed');
+      });
   }
 
   /**
