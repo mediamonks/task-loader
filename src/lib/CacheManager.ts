@@ -1,10 +1,9 @@
 import Disposable from 'seng-disposable';
 import sha1 from 'sha1';
 import bows from 'bows';
-import ICacheObject from "./interface/ICacheObject";
+import ICacheObject from './interface/ICacheObject';
 
-
-class CacheManager extends Disposable {
+export class CacheManager extends Disposable {
   /**
    * @description Object containing all the cached assets
    * @type {{}}

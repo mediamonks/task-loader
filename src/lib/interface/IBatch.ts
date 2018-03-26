@@ -1,4 +1,6 @@
-export default interface IBatch {
+interface IBatch {
   src: string;
   index: number;
-};
+}
+
+export default IBatch;

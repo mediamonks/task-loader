@@ -1,6 +1,9 @@
 /**
  * @description The cache object structure
  */
-export default interface ICacheObject {
+
+interface ICacheObject {
   [id: string]: string | ICacheObject;
-};
+}
+
+export default ICacheObject;

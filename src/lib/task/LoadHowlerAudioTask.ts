@@ -14,6 +14,9 @@ import ILoadTaskOptions from '../interface/ILoadTaskOptions';
  * ```
  */
 export default class LoadHowlerAudioTask extends AbstractLoadTask<Howl> {
+  /**
+   * @description Overwrite the default load options because howler requires extra data
+   */
   protected options: ILoadHowlerAudioTaskOptions;
 
   /**
@@ -42,10 +45,14 @@ export default class LoadHowlerAudioTask extends AbstractLoadTask<Howl> {
 /**
  * @description Howler has the option for multiple formats like mp3, ogg, mp4 etc
  */
-interface ILoadHowlerAudioTaskOptions extends ILoadTaskOptions<Howl> {
+export interface ILoadHowlerAudioTaskOptions extends ILoadTaskOptions<Howl> {
   format: Array<string>;
 }
 
+/**
+ * @description The howler states
+ * @type {{UNLOADED: string; LOADING: string; LOADED: string}}
+ */
 const state = {
   UNLOADED: 'unloaded',
   LOADING: 'loading',

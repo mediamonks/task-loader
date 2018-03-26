@@ -1,3 +1,5 @@
-export default interface ITaskLoaderEventData {
+interface ITaskLoaderEventData {
   progress: number;
 }
+
+export default ITaskLoaderEventData;
