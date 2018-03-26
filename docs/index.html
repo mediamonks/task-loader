@@ -65,10 +65,10 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="task-loader">task-loader</h1>
-				<p>Add a description here...</p>
-				<p><a href="https://travis-ci.org/mediamonks/task-loader"><img src="https://img.shields.io/travis/mediamonks/task-loader.svg?maxAge=2592000" alt="Travis"></a>
-					<a href="https://codeclimate.com/github/mediamonks/task-loader"><img src="https://img.shields.io/codeclimate/github/mediamonks/task-loader.svg?maxAge=2592000" alt="Code Climate"></a>
-					<a href="https://coveralls.io/github/mediamonks/task-loader?branch=master"><img src="https://img.shields.io/coveralls/mediamonks/task-loader.svg?maxAge=2592000" alt="Coveralls"></a>
+				<p>Class for loading assets</p>
+				<p><a href="https://travis-ci.org/larsvanbraam/task-loader"><img src="https://img.shields.io/travis/larsvanbraam/task-loader.svg?maxAge=2592000" alt="Travis"></a>
+					<a href="https://codeclimate.com/github/larsvanbraam/task-loader"><img src="https://img.shields.io/codeclimate/github/larsvanbraam/task-loader.svg?maxAge=2592000" alt="Code Climate"></a>
+					<a href="https://coveralls.io/github/larsvanbraam/task-loader?branch=master"><img src="https://img.shields.io/coveralls/larsvanbraam/task-loader.svg?maxAge=2592000" alt="Coveralls"></a>
 					<a href="https://www.npmjs.com/package/task-loader"><img src="https://img.shields.io/npm/v/task-loader.svg?maxAge=2592000" alt="npm"></a>
 				<a href="https://www.npmjs.com/package/task-loader"><img src="https://img.shields.io/npm/dm/task-loader.svg?maxAge=2592000" alt="npm"></a></p>
 				<h2 id="installation">Installation</h2>
@@ -76,19 +76,83 @@
 </code></pre>
 				<pre><code class="lang-sh">npm i -S task-loader
 </code></pre>
-				<h2 id="basic-usage">Basic Usage</h2>
+				<h2 id="usage">Usage</h2>
+				<h3 id="task-loader-usage">Task loader usage</h3>
 				<pre><code class="lang-ts"><span class="hljs-keyword">import</span> TaskLoader <span class="hljs-keyword">from</span> <span class="hljs-string">'task-loader'</span>;
-<span class="hljs-comment">// import TaskLoader from 'task-loader/lib/classname';</span>
+<span class="hljs-keyword">import</span> {
+  LoadImageTask,
+  LoadVideoTask,
+  LoadHowlerAudioTask,
+  LoadJsonTask,
+  LoadScriptTask,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'task-loader'</span>;
 
-<span class="hljs-comment">// do something with TaskLoader</span>
+<span class="hljs-keyword">const</span> taskLoader = <span class="hljs-keyword">new</span> TaskLoader();
+
+taskLoader.addEvents(TaskLoaderEvent.START, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Start'</span>))
+taskLoader.addEvents(TaskLoaderEvent.UPDATE, <span class="hljs-function">(<span class="hljs-params">{ data }</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Update'</span>, data.progress))
+taskLoader.addEvents(TaskLoaderEvent.COMPLETE, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Complete'</span>))
+taskLoader.addEvents(TaskLoaderEvent.FAILURE, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Failure during loading'</span>))
+
+taskLoader.loadTasks([
+  <span class="hljs-keyword">new</span> LoadImageTask({
+    <span class="hljs-comment">// Array of strings or a single string with the path to the asset</span>
+    assets: [<span class="hljs-string">'path/to/image-1.jpg'</span>, <span class="hljs-string">'path/to/image-2.jpg'</span>],
+    <span class="hljs-comment">// The size of a batch, this is how many requests happen at the same time</span>
+    batchSize: <span class="hljs-number">1</span>,
+    <span class="hljs-comment">// Flag to disable caching of assets, by default all</span>
+    <span class="hljs-comment">// assets are stored in an object for faster retrieval.</span>
+    cached: <span class="hljs-literal">true</span>,
+    <span class="hljs-comment">// When loading a lot of assets (for example an image sequence)</span>
+    <span class="hljs-comment">// you might want to group them so you can easily remove them when</span>
+    <span class="hljs-comment">// you no longer need them</span>
+    cacheNameSpace: <span class="hljs-string">'foo'</span>,
+    <span class="hljs-comment">// Triggered when an asset is loaded, returns the original index + the asset</span>
+    onAssetLoaded: <span class="hljs-function">(<span class="hljs-params">{index, asset}</span>) =&gt;</span> {}
+  }),
+  <span class="hljs-keyword">new</span> LoadVideoTask({
+    assets: [<span class="hljs-string">'path/to/video.mp4'</span>],
+  }),
+  <span class="hljs-keyword">new</span> LoadHowlerAudioTask({
+    assets: [<span class="hljs-string">'path/to/audio.{format}}'</span>],
+    formats: [<span class="hljs-string">'mp3'</span>, <span class="hljs-string">'ogg'</span>],
+  }),
+  <span class="hljs-keyword">new</span> LoadJsonTask({
+    assets: [<span class="hljs-string">'path/to/file.json'</span>],
+  }),
+  <span class="hljs-keyword">new</span> LoadScriptTask({
+    assets: [<span class="hljs-string">'path/to/file.js'</span>],
+  }),
+])
+.then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'All assets loaded'</span>);
+.catch(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Failure during loading'</span>);
+</code></pre>
+				<h3 id="cachemanager-usage">cacheManager usage</h3>
+				<pre><code class="lang-ts">import cacheManager from &#39;task-loader&#39;;
+
+// Manually add an asset to the cacheManager
+const asset = document.createElement(&#39;img&#39;);
+cacheManager.add(&#39;image&#39;, asset, &#39;bar&#39;);
+
+// Retrieve an asset from the cache manager once it&#39;s loaded
+const videoBlob = cacheManager.get(&#39;path/to/video.jp4&#39;));
+
+// Retrieve images stored in a namespace
+const images = cacheManager.get(&#39;path/to/image-1.jpg&#39;, &#39;&#39;foo&#39;);
+
+// Remove assets from cache
+cacheManager.remove(&#39;path/to/video.mp4&#39;);
+
+// Remove assets within a namespace
+cacheManager.remove(&#39;foo&#39;);
 </code></pre>
 				<h2 id="documentation">Documentation</h2>
-				<p>View the <a href="http://mediamonks.github.io/task-loader/">generated documentation</a>.</p>
+				<p>View the <a href="http://larsvanbraam.github.io/task-loader/">generated documentation</a>.</p>
 				<h2 id="building">Building</h2>
 				<p>In order to build task-loader, ensure that you have <a href="http://git-scm.com/downloads">Git</a>
 				and <a href="http://nodejs.org/">Node.js</a> installed.</p>
 				<p>Clone a copy of the repo:</p>
-				<pre><code class="lang-sh">git <span class="hljs-built_in">clone</span> https://github.com/mediamonks/task-loader.git
+				<pre><code class="lang-sh">git <span class="hljs-built_in">clone</span> https://github.com/larsvanbraam/task-loader.git
 </code></pre>
 				<p>Change to the task-loader directory:</p>
 				<pre><code class="lang-sh"><span class="hljs-built_in">cd</span> task-loader
@@ -113,7 +177,7 @@ yarn doc              <span class="hljs-comment"># generate typedoc documentatio
 				<h2 id="authors">Authors</h2>
 				<p>View <a href="./AUTHORS.md">AUTHORS.md</a></p>
 				<h2 id="license">LICENSE</h2>
-				<p><a href="./LICENSE">MIT</a> © MediaMonks</p>
+				<p><a href="./LICENSE">MIT</a> © Lars van Braam</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
