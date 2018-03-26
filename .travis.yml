@@ -21,7 +21,7 @@ after_script:
 
 deploy:
   - provider: npm
-    email: 'devmonk@mediamonks.com'
+    email: 'larsvanbraam@gmail.com'
     api_key: $NPM_TOKEN
     on:
       tags: true
