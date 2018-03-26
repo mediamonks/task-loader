@@ -97,6 +97,16 @@ cacheManager.remove('path/to/video.mp4');
 cacheManager.remove('foo');
 ```
 
+## Example
+
+I've included an example setup where you can see the loader in action, to run the project follow these steps:
+
+- `git clone https://github.com/larsvanbraam/task-loader.git`
+- `cd task-loader/example`
+- `yarn`
+- `yarn start`
+- Open your browser `localhost:8080`
+
 ## Documentation
 
 View the [generated documentation](http://larsvanbraam.github.io/task-loader/).
