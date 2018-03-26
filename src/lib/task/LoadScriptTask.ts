@@ -16,7 +16,7 @@ export default class LoadScriptTask extends AbstractLoadTask<HTMLScriptElement> 
    * @private
    * @method loadAsset
    * @param {string} src
-   * @returns {Promise<void>}
+   * @returns {Promise<HTMLScriptElement>}
    */
   public loadAsset(src: string): Promise<HTMLScriptElement> {
     return new Promise(

@@ -17,7 +17,7 @@ export default class LoadJsonTask extends AbstractLoadTask<HTMLScriptElement> {
    * @private
    * @method loadAsset
    * @param {string} src
-   * @returns {Promise<void>}
+   * @returns {Promise<any>}
    */
   public loadAsset(src: string): Promise<any> {
     return new Promise((resolve: (json: any) => void, reject: (reason: string) => void) => {

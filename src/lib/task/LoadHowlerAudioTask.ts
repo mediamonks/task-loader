@@ -18,9 +18,9 @@ export default class LoadHowlerAudioTask extends AbstractLoadTask<Howl> {
 
   /**
    * @private
-   * @method loadImage
+   * @method loadAsset
    * @param {string} src
-   * @returns {Promise<void>}
+   * @returns {Promise<Howl>}
    */
   public loadAsset(src: string): Promise<Howl> {
     return new Promise((resolve: (howl: Howl) => void) => {

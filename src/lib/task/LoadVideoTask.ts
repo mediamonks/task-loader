@@ -14,9 +14,9 @@ import AbstractLoadTask from '../task/AbstractLoadTask';
 export default class LoadVideoTask extends AbstractLoadTask<string> {
   /**
    * @private
-   * @method loadImage
+   * @method loadAsset
    * @param {string} src
-   * @returns {Promise<void>}
+   * @returns {Promise<string>}
    */
   public loadAsset(src: string, update?: (progress: number) => void): Promise<string> {
     return new Promise((resolve: (objectUrl: string) => void, reject: () => void) => {

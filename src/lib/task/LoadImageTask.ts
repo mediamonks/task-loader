@@ -14,9 +14,9 @@ import AbstractLoadTask from '../task/AbstractLoadTask';
 export default class LoadImageTask extends AbstractLoadTask<HTMLImageElement> {
   /**
    * @private
-   * @method loadImage
+   * @method loadAsset
    * @param {string} src
-   * @returns {Promise<void>}
+   * @returns {Promise<HTMLImageElement>}
    */
   public loadAsset(src: string): Promise<HTMLImageElement> {
     return new Promise((resolve: (image: HTMLImageElement) => void, reject: () => void) => {
