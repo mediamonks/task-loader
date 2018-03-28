@@ -22,27 +22,23 @@ export default function sequentialPromises(
   promises: Array<() => Promise<void>>,
   update?: (progress: number) => void,
 ) {
-  return new Promise<void>((resolve, reject) => {
-    const totalPromiseCount = promises.length;
-    let currentPromiseCount = 0;
+  // Counter to keep track of the promises that have been completed so we can dispatch the progress
+  let count = 0;
 
-    if (promises.length === 0 && update !== undefined) {
-      update(1);
-    }
+  // If no promises are provided update with 100%
+  if (promises.length === 0 && update !== undefined) {
+    update(1);
+  }
 
-    promises
-      .reduce(
-        (prevPromise, createNextPromise) =>
-          prevPromise
-            .then(
-              () => (update !== undefined ? update(currentPromiseCount / totalPromiseCount) : null),
-            )
-            .then(() => (currentPromiseCount += 1))
-            .then(() => createNextPromise()),
-        Promise.resolve(),
-      )
-      .then(() => (update !== undefined ? update(currentPromiseCount / totalPromiseCount) : null))
-      .then(resolve)
-      .catch(reject);
-  });
+  // Return promises
+  return promises.reduce(
+    (previousPromise, createNewPromise) =>
+      previousPromise
+        .then(
+          () => (update !== undefined ? update(count / promises.length - 1) : Promise.resolve()),
+        )
+        .then(() => (count += 1))
+        .then(() => createNewPromise()),
+    Promise.resolve(),
+  );
 }

@@ -22,6 +22,7 @@ new Vue({
         progress: 0,
         options: {
           assets: ['./static/dummy-image.jpeg'],
+          weight: 2,
         },
       },
       {

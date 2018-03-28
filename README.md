@@ -45,6 +45,9 @@ taskLoader.loadTasks([
     assets: ['path/to/image-1.jpg', 'path/to/image-2.jpg'],
     // The size of a batch, this is how many requests happen at the same time
     batchSize: 1,
+    // The weight of the load task, the higher the number the more weight a task has on the
+    // total progress the lower the less. If none is provided all tasks have the same weight.
+    weight: 2,
     // Flag to disable caching of assets, by default all
     // assets are stored in an object for faster retrieval.
     cached: true,
@@ -111,7 +114,9 @@ or click [this link](https://larsvanbraam.github.io/task-loader/example) to prev
 
 ## Documentation
 
-View the [generated documentation](http://larsvanbraam.github.io/task-loader/docs).
+View the [generated documentation](http://larsvan
+
+braam.github.io/task-loader/docs).
 
 ## Building
 

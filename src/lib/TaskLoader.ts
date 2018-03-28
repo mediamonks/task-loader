@@ -38,22 +38,13 @@ import TaskLoaderEvent from './event/TaskLoaderEvent';
 export default class TaskLoader extends EventDispatcher {
   /**
    * @private
-   * @type {number}
-   * @description Number of task in the task loader, this is used for calculating the total progress
+   * @description Array containing all the tasks that will be loaded
+   * @type {any[]}
    */
-  private taskCount: number = 0;
-  /**
-   * @private
-   * @type {number}
-   * @description The number of completed tasks in the task loader, this is used for calculating the total progress
-   */
-  private tasksCompleted: number = 0;
-  /**
-   * @private
-   * @type {number}
-   * @description The progress for the currently running task, this is used for calculating the total progress
-   */
-  private taskProgress: number = 0;
+  private tasks: Array<{
+    progress: number;
+    task: AbstractLoadTask<any>;
+  }> = [];
 
   /**
    * @description This method starts loading the tasks. You can provide an array of tasks which all contain their
@@ -65,28 +56,45 @@ export default class TaskLoader extends EventDispatcher {
     // Reset the data
     this.reset();
 
-    this.taskCount = tasks.length;
+    // Create the task objects
+    this.tasks = tasks.reduce((tasks, task) => {
+      tasks.push({
+        task,
+        progress: 0,
+      });
+      return tasks;
+    }, []);
+
+    // Apply the weight to all the tasks to make sure the total equals 1
+    const weightPerTask = 1 / tasks.length;
+    const weights = tasks.map(task => task.getWeight() * weightPerTask);
+    // Extra weight value to be added to al tasks to match the total of 1
+    const extraWeight =
+      weights.reduce(
+        (extraWeight, currentWeight) => extraWeight + (weightPerTask - currentWeight),
+        0,
+      ) / tasks.length;
+
+    // Update the weight on each task
+    tasks.forEach((task, index) => {
+      task.setWeight(weights[index] + extraWeight);
+    });
 
     // Notify about the starting
     this.dispatchEvent(new TaskLoaderEvent(TaskLoaderEvent.START));
 
+    // Start loading the tasks
     return sequentialPromises(
-      tasks.map(task => () =>
-        task.load(progress => {
+      this.tasks.map(taskObject => () =>
+        taskObject.task.load(progress => {
           // Update the task progress
-          this.taskProgress = progress;
+          taskObject.progress = progress;
           // Notify about the progress
           this.update();
         }),
       ),
-      progress => {
-        // Reset the task progress
-        this.taskProgress = 0;
-        // Up the completed task counter
-        this.tasksCompleted = this.taskCount * progress;
-      },
     )
-      .then(() => tasks.forEach(task => task.dispose()))
+      .then(() => this.tasks.forEach(taskObject => taskObject.task.dispose()))
       .then(() => this.dispatchEvent(new TaskLoaderEvent(TaskLoaderEvent.COMPLETE)))
       .catch(() => {
         this.dispatchEvent(new TaskLoaderEvent(TaskLoaderEvent.FAILED));
@@ -101,7 +109,15 @@ export default class TaskLoader extends EventDispatcher {
    * @returns {number}
    */
   private getProgress(): number {
-    return this.taskCount > 0 ? (this.tasksCompleted + this.taskProgress) / this.taskCount : 0;
+    // Calculate the total progress
+    const totalProgress = this.tasks.reduce(
+      (totalProgress, currentTask) =>
+        totalProgress + currentTask.progress * currentTask.task.getWeight(),
+      0,
+    );
+
+    // Divide by the amount of tasks
+    return this.tasks.length ? totalProgress : 0;
   }
 
   /**
@@ -110,9 +126,7 @@ export default class TaskLoader extends EventDispatcher {
    * @description Reset the task loader to allow another batch of tasks to run through it.
    */
   private reset(): void {
-    this.taskCount = 0;
-    this.tasksCompleted = 0;
-    this.taskProgress = 0;
+    this.tasks = [];
   }
 
   /**
@@ -135,8 +149,6 @@ export default class TaskLoader extends EventDispatcher {
    * @description Dispose the task loader and clean all the variables
    */
   public dispose(): void {
-    this.taskCount = null;
-    this.tasksCompleted = null;
-    this.taskProgress = null;
+    this.tasks = null;
   }
 }

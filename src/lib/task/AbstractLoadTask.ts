@@ -18,6 +18,7 @@ export default abstract class LoadTask<T> extends EventDispatcher {
   protected options: ILoadTaskOptions<T> = {
     assets: [],
     batchSize: 1,
+    weight: 1,
     cacheNameSpace: null,
     cached: true,
   };
@@ -46,6 +47,24 @@ export default abstract class LoadTask<T> extends EventDispatcher {
 
   /**
    * @public
+   * @method setWeight
+   * @param {number} weight
+   */
+  public setWeight(weight: number): void {
+    this.options.weight = weight;
+  }
+
+  /**
+   * @public
+   * @method getWeight
+   * @param {number} weight
+   */
+  public getWeight(): number {
+    return this.options.weight;
+  }
+
+  /**
+   * @public
    * @method load
    * @param {(progress: number) => void} update
    * @returns {Promise<void>}
@@ -60,7 +79,12 @@ export default abstract class LoadTask<T> extends EventDispatcher {
         return this.parseBatch(batch, progress => {
           batchProgress[batchIndex] = progress;
           // Calculate the total progress for the task
-          const totalProgress = batchProgress.reduce((a, b) => a + b) / batchProgress.length;
+          const totalProgress =
+            batchProgress.reduce(
+              (totalProgress, currentProgress) => totalProgress + currentProgress,
+              0,
+            ) / batchProgress.length;
+
           // Dispatch an event with the task progress
           this.dispatchEvent(
             new TaskLoaderEvent(TaskLoaderEvent.UPDATE, {
@@ -74,11 +98,6 @@ export default abstract class LoadTask<T> extends EventDispatcher {
           }
         });
       }),
-      progress => {
-        if (update) {
-          update(progress);
-        }
-      },
     )
       .then(() => {
         this.dispatchEvent(new TaskLoaderEvent(TaskLoaderEvent.COMPLETE));
@@ -100,6 +119,7 @@ export default abstract class LoadTask<T> extends EventDispatcher {
   private parseBatch(batch: Array<IBatch>, update?: (progress: number) => void): Promise<void> {
     return new Promise((resolve, reject) => {
       const batchProgress = batch.map(() => 0);
+
       Promise.all(
         batch.map(item =>
           this.loadBatch(item, batchProgress, update).then(asset => {
@@ -129,11 +149,10 @@ export default abstract class LoadTask<T> extends EventDispatcher {
       if (index % this.options.batchSize === 0) {
         this.batches.push(<any>[]);
       }
-
       // Push into the new batch
       this.batches[this.batches.length - 1].push({
         src,
-        index,
+        index: index % this.options.batchSize,
       });
     });
   }
@@ -155,14 +174,18 @@ export default abstract class LoadTask<T> extends EventDispatcher {
 
     if (cachedItem) {
       if (update) update(1);
-
       return Promise.resolve(cachedItem);
     }
-
     return this.loadAsset(item.src, progress => {
       batchProgress[item.index] = progress;
+
       if (update) {
-        update(batchProgress.reduce((a, b) => a + b) / batchProgress.length);
+        update(
+          batchProgress.reduce(
+            (totalProgress, currentProgress) => totalProgress + currentProgress,
+            0,
+          ) / batchProgress.length,
+        );
       }
     }).then(asset => {
       // Add to the cache manager if enabled

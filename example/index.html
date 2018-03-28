@@ -82,7 +82,7 @@
       </tr>
       </tfoot>
     </table>
-    <button :disabled="started" @click="handleStartClick" class="btn btn-primary">
+    <button :disabled="started" @click="handleStartClick" :class="['btn', {'btn-primary': totalProgress < 1}, {'btn-success': totalProgress >= 1} ]">
       {{ started ? totalProgress >= 1 ? 'Done' : 'Running...' : 'Start example'}}
     </button>
   </section>

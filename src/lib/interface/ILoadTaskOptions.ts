@@ -6,6 +6,7 @@ interface ILoadTaskOptions<T> {
   cached?: boolean;
   cacheNameSpace?: string;
   onAssetLoaded?: (result: IAssetLoadedResponse<T>) => void;
+  weight?: number;
 }
 
 export default ILoadTaskOptions;
