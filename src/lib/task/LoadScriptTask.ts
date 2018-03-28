@@ -16,9 +16,10 @@ export default class LoadScriptTask extends AbstractLoadTask<HTMLScriptElement> 
    * @private
    * @method loadAsset
    * @param {string} src
+   * @param {function} update
    * @returns {Promise<HTMLScriptElement>}
    */
-  public loadAsset(src: string): Promise<HTMLScriptElement> {
+  public loadAsset(src: string, update?: (progress: number) => void): Promise<HTMLScriptElement> {
     return new Promise(
       (resolve: (image: HTMLScriptElement) => void, reject: (reason: string) => void) => {
         const s = document.createElement('script');
@@ -28,6 +29,7 @@ export default class LoadScriptTask extends AbstractLoadTask<HTMLScriptElement> 
         const onload = () => {
           if (!r && (!s['readyState'] || s['readyState'] === 'complete')) {
             r = true;
+            if (update) update(1); // TODO: implement loading progress?
             resolve(s);
           }
         };

@@ -23,9 +23,10 @@ export default class LoadHowlerAudioTask extends AbstractLoadTask<Howl> {
    * @private
    * @method loadAsset
    * @param {string} src
+   * @param {function} update
    * @returns {Promise<Howl>}
    */
-  public loadAsset(src: string): Promise<Howl> {
+  public loadAsset(src: string, update?: (progress: number) => void): Promise<Howl> {
     return new Promise((resolve: (howl: Howl) => void) => {
       const sources = this.options.format.map(format => src.replace('format', format));
       const howl = new Howl({ src: sources });
@@ -33,8 +34,12 @@ export default class LoadHowlerAudioTask extends AbstractLoadTask<Howl> {
       switch (howl.state()) {
         case state.UNLOADED:
         case state.LOADING:
-          howl.once('load', () => resolve(howl));
+          howl.once('load', () => {
+            if (update) update(1); // TODO: implement loading progress?
+            resolve(howl);
+          });
         case state.LOADED: {
+          if (update) update(1); // TODO: implement loading progress?
           resolve(howl);
         }
       }

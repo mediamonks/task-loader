@@ -1,10 +1,11 @@
-import Disposable from 'seng-disposable';
+import EventDispatcher from 'seng-event';
 import sequentialPromises from '../util/sequentialPromises';
 import cacheManager from '../CacheManager';
 import ILoadTaskOptions from '../interface/ILoadTaskOptions';
 import IBatch from '../interface/IBatch';
+import TaskLoaderEvent from '../event/TaskLoaderEvent';
 
-export default abstract class LoadTask<T> extends Disposable {
+export default abstract class LoadTask<T> extends EventDispatcher {
   /**
    * @description Array containing the batches of assets to be loaded
    * @type {Array}
@@ -51,13 +52,25 @@ export default abstract class LoadTask<T> extends Disposable {
    */
   public load(update?: (progress: number) => void): Promise<void> {
     const batchProgress = this.batches.map(() => 0);
+    // Dispatch an event about the start
+    this.dispatchEvent(new TaskLoaderEvent(TaskLoaderEvent.START));
+
     return sequentialPromises(
       this.batches.map((batch, batchIndex) => () => {
         return this.parseBatch(batch, progress => {
           batchProgress[batchIndex] = progress;
+          // Calculate the total progress for the task
+          const totalProgress = batchProgress.reduce((a, b) => a + b) / batchProgress.length;
+          // Dispatch an event with the task progress
+          this.dispatchEvent(
+            new TaskLoaderEvent(TaskLoaderEvent.UPDATE, {
+              progress: totalProgress,
+            }),
+          );
+          // Trigger the callback if provided
           if (update) {
             // Update with the batch progress total value
-            update(batchProgress.reduce((a, b) => a + b) / batchProgress.length);
+            update(totalProgress);
           }
         });
       }),
@@ -66,9 +79,14 @@ export default abstract class LoadTask<T> extends Disposable {
           update(progress);
         }
       },
-    ).catch(reason => {
-      throw new Error(`Task failed: ${reason}`);
-    });
+    )
+      .then(() => {
+        this.dispatchEvent(new TaskLoaderEvent(TaskLoaderEvent.COMPLETE));
+      })
+      .catch(reason => {
+        this.dispatchEvent(new TaskLoaderEvent(TaskLoaderEvent.FAILED));
+        throw new Error(`Task failed: ${reason}`);
+      });
   }
 
   /**
@@ -136,6 +154,8 @@ export default abstract class LoadTask<T> extends Disposable {
     const cachedItem = cacheManager.get(item.src, this.options.cacheNameSpace);
 
     if (cachedItem) {
+      if (update) update(1);
+
       return Promise.resolve(cachedItem);
     }
 

@@ -1,4 +1,4 @@
-import EventDispatcher from 'seng-event';
+import EventDispatcher from 'seng-event/lib/EventDispatcher';
 import AbstractLoadTask from './task/AbstractLoadTask';
 import sequentialPromises from './util/sequentialPromises';
 import TaskLoaderEvent from './event/TaskLoaderEvent';

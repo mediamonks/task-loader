@@ -61,43 +61,53 @@ new Vue({
   },
   created() {
     this.taskLoader = new TaskLoader();
-    this.taskLoader.addEventListener(TaskLoaderEvent.START, this.handleEvent);
-    this.taskLoader.addEventListener(TaskLoaderEvent.UPDATE, this.handleUpdate);
-    this.taskLoader.addEventListener(TaskLoaderEvent.COMPLETE, this.handleEvent);
-    this.taskLoader.addEventListener(TaskLoaderEvent.FAILED, this.handleEvent);
+    this.taskLoader.addEventListener(TaskLoaderEvent.START, event =>
+      this.handleEvent('TaskLoader', event),
+    );
+    this.taskLoader.addEventListener(TaskLoaderEvent.UPDATE, event => {
+      this.totalProgress = event.data.progress; // eslint-disable-line
+      this.handleEvent('TaskLoader', event);
+    });
+    this.taskLoader.addEventListener(TaskLoaderEvent.COMPLETE, event =>
+      this.handleEvent('TaskLoader', event),
+    );
+    this.taskLoader.addEventListener(TaskLoaderEvent.FAILED, event =>
+      this.handleEvent('TaskLoader', event),
+    );
   },
   methods: {
     handleStartClick() {
       this.started = true;
-      const tasks = this.tasks.map(
-        task =>
-          new task.constructor(
-            Object.assign(task.options, {
-              onAssetLoaded: result => this.handleAssetLoaded(result, task),
-            }),
-          ),
-      );
+      const tasks = this.tasks.map(task => {
+        const loadTask = new task.constructor(task.options);
+        loadTask.addEventListener(TaskLoaderEvent.START, event =>
+          this.handleEvent(task.label, event),
+        );
+        loadTask.addEventListener(TaskLoaderEvent.UPDATE, event => {
+          task.progress = event.data.progress; // eslint-disable-line
+          this.handleEvent(task.label, event);
+        });
+        loadTask.addEventListener(TaskLoaderEvent.COMPLETE, event =>
+          this.handleEvent(task.label, event),
+        );
+        loadTask.addEventListener(TaskLoaderEvent.FAILED, event =>
+          this.handleEvent(task.label, event),
+        );
+
+        return loadTask;
+      });
       this.taskLoader.loadTasks(tasks);
     },
-    handleAssetLoaded({ index }, task) {
-      // console.log('asset loaded', task.constructor.name);
-      task.progress = (index + 1) / task.options.assets.length; // eslint-disable-line
-    },
-    handleEvent(event) {
-      this.events.unshift(
+    handleEvent(label, event) {
+      this.events.push(
         Object.assign(
           {
-            eventType: event.type,
+            eventType: `<strong>${label}</strong> ${event.type}`,
             data: event.data,
           },
           {},
         ),
       );
-    },
-    handleUpdate(event) {
-      // console.log('handle update', event.data);
-      this.totalProgress = event.data.progress;
-      this.handleEvent(event);
     },
   },
 });

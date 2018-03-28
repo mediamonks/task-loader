@@ -90,7 +90,10 @@
     <h3 id="events">Events:</h3>
     <ul class="list-group">
       <li class="list-group-item" v-for="(event, index) in events">
-        <h5 class="list-group-item-heading"><span class="text-primary icon glyphicon glyphicon-chevron-right"></span>{{event.eventType}}</h5>
+        <h5 class="list-group-item-heading">
+          <span class="text-primary icon glyphicon glyphicon-chevron-right"></span>
+          <span v-html="event.eventType"></span>
+        </h5>
         <pre v-if="event.data">{{event.data}}</pre>
       </li>
     </ul>

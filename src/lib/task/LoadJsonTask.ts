@@ -17,13 +17,17 @@ export default class LoadJsonTask extends AbstractLoadTask<HTMLScriptElement> {
    * @private
    * @method loadAsset
    * @param {string} src
+   * @param {function} update
    * @returns {Promise<any>}
    */
-  public loadAsset(src: string): Promise<any> {
+  public loadAsset(src: string, update?: (progress: number) => void): Promise<any> {
     return new Promise((resolve: (json: any) => void, reject: (reason: string) => void) => {
       axios
         .get(src)
-        .then(result => resolve(result.data))
+        .then(result => {
+          if (update) update(1); // TODO: implement loading progress?
+          resolve(result.data);
+        })
         .catch(reason => reject(reason));
     });
   }
