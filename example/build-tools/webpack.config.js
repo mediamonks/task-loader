@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   devServer: {
     contentBase: './',
@@ -14,6 +16,7 @@ module.exports = {
     ],
   },
   output: {
-    path: __dirname,
+    path: path.resolve(__dirname, '../'),
+    filename: 'bundle.js',
   },
 };
