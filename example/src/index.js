@@ -75,15 +75,22 @@ new Vue({
       this.taskLoader.loadTasks(tasks);
     },
     handleAssetLoaded({ index }, task) {
+      // console.log('asset loaded', task.constructor.name);
       task.progress = (index + 1) / task.options.assets.length; // eslint-disable-line
     },
     handleEvent(event) {
-      this.events.unshift({
-        eventType: event.type,
-        data: event.data,
-      });
+      this.events.unshift(
+        Object.assign(
+          {
+            eventType: event.type,
+            data: event.data,
+          },
+          {},
+        ),
+      );
     },
     handleUpdate(event) {
+      // console.log('handle update', event.data);
       this.totalProgress = event.data.progress;
       this.handleEvent(event);
     },

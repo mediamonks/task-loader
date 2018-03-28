@@ -104,7 +104,7 @@ I've included an example setup where you can see the loader in action, to run th
 - `git clone https://github.com/larsvanbraam/task-loader.git`
 - `cd task-loader/example`
 - `yarn`
-- `yarn start`
+- `yarn dev`
 - Open your browser `localhost:8080`
 
 or click [this link](https://larsvanbraam.github.io/task-loader/example) to preview online

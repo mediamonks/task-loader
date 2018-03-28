@@ -23,7 +23,8 @@ export default function sequentialPromises(
   update?: (progress: number) => void,
 ) {
   return new Promise<void>((resolve, reject) => {
-    const promiseCount = promises.length;
+    const totalPromiseCount = promises.length;
+    let currentPromiseCount = 0;
 
     if (promises.length === 0 && update !== undefined) {
       update(1);
@@ -34,14 +35,13 @@ export default function sequentialPromises(
         (prevPromise, createNextPromise) =>
           prevPromise
             .then(
-              () =>
-                update !== undefined
-                  ? update((promiseCount - promises.length) / promiseCount)
-                  : null,
+              () => (update !== undefined ? update(currentPromiseCount / totalPromiseCount) : null),
             )
+            .then(() => (currentPromiseCount += 1))
             .then(() => createNextPromise()),
         Promise.resolve(),
       )
+      .then(() => (update !== undefined ? update(currentPromiseCount / totalPromiseCount) : null))
       .then(resolve)
       .catch(reject);
   });
