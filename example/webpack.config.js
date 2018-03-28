@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
   devServer: {
     contentBase: './',
@@ -14,5 +12,8 @@ module.exports = {
         loader: 'ts-loader',
       },
     ],
+  },
+  output: {
+    path: __dirname,
   },
 };
