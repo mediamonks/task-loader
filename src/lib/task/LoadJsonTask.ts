@@ -1,5 +1,5 @@
-import AbstractLoadTask from '../task/AbstractLoadTask';
 import axios from 'axios';
+import AbstractLoadTask from '../task/AbstractLoadTask';
 
 /**
  * @description Load external json files in the TaskLoader
