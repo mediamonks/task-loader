@@ -51,7 +51,7 @@
       <tbody>
       <tr v-for="(task, index) in tasks" :key="index">
         <td scope="row" v-text="index + 1"></td>
-        <td v-text="task.constructor.name"></td>
+        <td v-text="task.label"></td>
         <td>
           <ul>
             <li v-for="(asset, index) in task.options.assets" :key="index">{{asset}}</li>

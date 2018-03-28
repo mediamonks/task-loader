@@ -18,6 +18,7 @@ new Vue({
     tasks: [
       {
         constructor: LoadImageTask,
+        label: 'LoadImageTask',
         progress: 0,
         options: {
           assets: ['./static/dummy-image.jpeg'],
@@ -25,6 +26,7 @@ new Vue({
       },
       {
         constructor: LoadVideoTask,
+        label: 'LoadVideoTask',
         progress: 0,
         options: {
           assets: ['./static/dummy-video.mp4'],
@@ -32,6 +34,7 @@ new Vue({
       },
       {
         constructor: LoadJsonTask,
+        label: 'LoadJsonTask',
         progress: 0,
         options: {
           assets: ['./static/dummy-json.json'],
@@ -39,6 +42,7 @@ new Vue({
       },
       {
         constructor: LoadScriptTask,
+        label: 'LoadScriptTask',
         progress: 0,
         options: {
           assets: ['./static/dummy-script.js'],
@@ -46,6 +50,7 @@ new Vue({
       },
       {
         constructor: LoadHowlerAudioTask,
+        label: 'LoadHowlerAudioTask',
         progress: 0,
         options: {
           assets: ['./static/dummy-audio.{format}'],
