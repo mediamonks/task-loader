@@ -1,8 +1,8 @@
 import EventDispatcher from 'seng-event';
 import sequentialPromises from '../util/sequentialPromises';
 import cacheManager from '../CacheManager';
-import ILoadTaskOptions from '../interface/ILoadTaskOptions';
-import IBatch from '../interface/IBatch';
+import { ILoadTaskOptions } from '../interface/ILoadTaskOptions';
+import { IBatch } from '../interface/IBatch';
 import TaskLoaderEvent from '../event/TaskLoaderEvent';
 
 export default abstract class LoadTask<T> extends EventDispatcher {

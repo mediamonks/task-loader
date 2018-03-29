@@ -1,6 +1,6 @@
 import AbstractLoadTask from './AbstractLoadTask';
 import { Howl } from 'howler';
-import ILoadTaskOptions from '../interface/ILoadTaskOptions';
+import { ILoadTaskOptions } from '../interface/ILoadTaskOptions';
 
 /**
  * @description Load howler audio in the TaskLoader

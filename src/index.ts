@@ -1,5 +1,7 @@
 import { default as _export } from './lib/TaskLoader';
 
+export { ILoadTaskOptions } from './lib/interface/ILoadTaskOptions';
+
 export { default as AbstractLoadTask } from './lib/task/AbstractLoadTask';
 export { default as LoadImageTask } from './lib/task/LoadImageTask';
 export { default as LoadJsonTask } from './lib/task/LoadJsonTask';

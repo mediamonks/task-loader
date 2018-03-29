@@ -1,6 +1,6 @@
-import IAssetLoadedResponse from './IAssetLoadedResponse';
+import { IAssetLoadedResponse } from './IAssetLoadedResponse';
 
-interface ILoadTaskOptions<T> {
+export interface ILoadTaskOptions<T> {
   assets: Array<string> | string;
   batchSize?: number;
   cached?: boolean;
@@ -8,5 +8,3 @@ interface ILoadTaskOptions<T> {
   onAssetLoaded?: (result: IAssetLoadedResponse<T>) => void;
   weight?: number;
 }
-
-export default ILoadTaskOptions;
