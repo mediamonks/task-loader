@@ -91,7 +91,7 @@ cacheManager.add('image', asset, 'bar');
 const videoBlob = cacheManager.get('path/to/video.jp4'));
 
 // Retrieve images stored in a namespace
-const images = cacheManager.get('path/to/image-1.jpg', ''foo');
+const images = cacheManager.get('path/to/image-1.jpg', 'foo');
 
 // Remove assets from cache
 cacheManager.remove('path/to/video.mp4');
