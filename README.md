@@ -114,9 +114,7 @@ or click [this link](https://larsvanbraam.github.io/task-loader/example) to prev
 
 ## Documentation
 
-View the [generated documentation](http://larsvan
-
-braam.github.io/task-loader/docs).
+View the [generated documentation](http://larsvanbraam.github.io/task-loader/docs).
 
 ## Building
 
