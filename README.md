@@ -91,7 +91,7 @@ cacheManager.add('image', asset, 'bar');
 const videoBlob = cacheManager.get('path/to/video.jp4'));
 
 // Retrieve images stored in a namespace
-const images = cacheManager.get('path/to/image-1.jpg', ''foo');
+const images = cacheManager.get('path/to/image-1.jpg', 'foo');
 
 // Remove assets from cache
 cacheManager.remove('path/to/video.mp4');
@@ -114,9 +114,7 @@ or click [this link](https://larsvanbraam.github.io/task-loader/example) to prev
 
 ## Documentation
 
-View the [generated documentation](http://larsvan
-
-braam.github.io/task-loader/docs).
+View the [generated documentation](http://larsvanbraam.github.io/task-loader/docs).
 
 ## Building
 
