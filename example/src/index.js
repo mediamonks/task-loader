@@ -1,3 +1,4 @@
+/* global hljs */
 import Vue from 'vue/dist/vue.esm';
 
 import LoadHowlerAudioTask from '../../src/lib/task/LoadHowlerAudioTask';
@@ -14,6 +15,7 @@ new Vue({
   data: {
     started: false,
     events: [],
+    activeTab: 0,
     totalProgress: 0,
     tasks: [
       {
@@ -60,7 +62,11 @@ new Vue({
       },
     ],
   },
-  created() {
+  mounted() {
+    // Highlight the code
+    document.body.querySelectorAll('pre').forEach(element => {
+      hljs.highlightBlock(element);
+    });
     this.taskLoader = new TaskLoader();
     this.taskLoader.addEventListener(TaskLoaderEvent.START, event =>
       this.handleEvent('TaskLoader', event),
@@ -109,6 +115,9 @@ new Vue({
           {},
         ),
       );
+    },
+    handleTabClick(index) {
+      this.activeTab = index;
     },
   },
 });

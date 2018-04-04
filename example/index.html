@@ -5,9 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Task loader example</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <style>
     body {
-      padding-top: 25px;
+      padding-top: 100px;
+      overflow-y: scroll;
+      overflow-x: hidden;
     }
 
     .icon {
@@ -21,7 +25,7 @@
     }
 
     section {
-      margin: 50px 0;
+      margin: 0 0 50px;
     }
   </style>
 </head>
@@ -31,73 +35,127 @@
 </nav>
 
 <main role="main" class="container" id="app">
-  <section>
-    <h3 id="example">Example</h3>
-    <div class="alert alert-info">
-      <strong>Note:</strong> <a class="alert-link" target="_blank"
-                                href="https://developers.google.com/web/tools/chrome-devtools/network-performance/reference#throttling">Throttle
-      your network</a> to see the loading effect.
+  <ul class="nav nav-tabs">
+    <li :class="[{'active': activeTab === 0}]" ><a @click.prevent="handleTabClick(0)" href="#" aria-expanded="true">Example</a></li>
+    <li :class="[{'active': activeTab === 1}]"><a @click.prevent="handleTabClick(1)" href="#" aria-expanded="false">Code</a></li>
+  </ul>
+  <div id="myTabContent" class="tab-content">
+    <div :class="['tab-pane', 'fade', 'in', {'active': activeTab === 0}]">
+      <section>
+        <h3 id="example">Example</h3>
+        <div class="alert alert-info">
+          <strong>Note:</strong> <a class="alert-link" target="_blank"
+                                    href="https://developers.google.com/web/tools/chrome-devtools/network-performance/reference#throttling">Throttle
+          your network</a> to see the loading effect.
+        </div>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Task</th>
+            <th scope="col">assets</th>
+            <th scope="col">Progress</th>
+            <th scope="col">Completed</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="(task, index) in tasks" :key="index">
+            <td scope="row" v-text="index + 1"></td>
+            <td v-text="task.label"></td>
+            <td>
+              <ul>
+                <li v-for="(asset, index) in task.options.assets" :key="index">{{asset}}</li>
+              </ul>
+            </td>
+            <td v-text="">
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  :aria-valuenow="Math.round(task.progress * 100)"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  :style="`width: ${Math.round(task.progress * 100)}%`"
+                ></div>
+              </div>
+            </td>
+            <td>
+              <span class="text-success icon glyphicon glyphicon-ok" v-if="task.progress >= 1"></span>
+              <span class="text-danger icon glyphicon glyphicon-remove" v-if="task.progress < 1"></span>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <th colspan="4" scope="row">Total Progress</th>
+            <td v-text="`${Math.round(totalProgress * 100)}%`"></td>
+          </tr>
+          </tfoot>
+        </table>
+        <button :disabled="started" @click="handleStartClick" :class="['btn', {'btn-primary': totalProgress < 1}, {'btn-success': totalProgress >= 1} ]">
+          {{ started ? totalProgress >= 1 ? 'Done' : 'Running...' : 'Start example'}}
+        </button>
+      </section>
+      <section v-if="events.length">
+        <h3 id="events">Events:</h3>
+        <ul class="list-group">
+          <li class="list-group-item" v-for="(event, index) in events">
+            <h5 class="list-group-item-heading">
+              <span class="text-primary icon glyphicon glyphicon-chevron-right"></span>
+              <span v-html="event.eventType"></span>
+            </h5>
+            <pre v-if="event.data">{{event.data}}</pre>
+          </li>
+        </ul>
+      </section>
     </div>
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Task</th>
-        <th scope="col">assets</th>
-        <th scope="col">Progress</th>
-        <th scope="col">Completed</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(task, index) in tasks" :key="index">
-        <td scope="row" v-text="index + 1"></td>
-        <td v-text="task.label"></td>
-        <td>
-          <ul>
-            <li v-for="(asset, index) in task.options.assets" :key="index">{{asset}}</li>
-          </ul>
-        </td>
-        <td v-text="">
-          <div class="progress">
-            <div
-              class="progress-bar"
-              role="progressbar"
-              :aria-valuenow="Math.round(task.progress * 100)"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              :style="`width: ${Math.round(task.progress * 100)}%`"
-            ></div>
-          </div>
-        </td>
-        <td>
-          <span class="text-success icon glyphicon glyphicon-ok" v-if="task.progress >= 1"></span>
-          <span class="text-danger icon glyphicon glyphicon-remove" v-if="task.progress < 1"></span>
-        </td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <tr>
-        <th colspan="4" scope="row">Total Progress</th>
-        <td v-text="`${Math.round(totalProgress * 100)}%`"></td>
-      </tr>
-      </tfoot>
-    </table>
-    <button :disabled="started" @click="handleStartClick" :class="['btn', {'btn-primary': totalProgress < 1}, {'btn-success': totalProgress >= 1} ]">
-      {{ started ? totalProgress >= 1 ? 'Done' : 'Running...' : 'Start example'}}
-    </button>
-  </section>
-  <section v-if="events.length">
-    <h3 id="events">Events:</h3>
-    <ul class="list-group">
-      <li class="list-group-item" v-for="(event, index) in events">
-        <h5 class="list-group-item-heading">
-          <span class="text-primary icon glyphicon glyphicon-chevron-right"></span>
-          <span v-html="event.eventType"></span>
-        </h5>
-        <pre v-if="event.data">{{event.data}}</pre>
-      </li>
-    </ul>
-  </section>
+    <div :class="['tab-pane', 'fade', 'in', {'active': activeTab === 1}]">
+      <h3 id="example-code">Example Code</h3>
+      <pre class="typescript">const taskLoader = new TaskLoader();
+const tasks = [
+  new LoadImageTask({
+    assets: ['./static/dummy-image.jpeg'],
+    weight: 2,
+  }),
+  new LoadVideoTask({
+    assets: ['./static/dummy-video.mp4'],
+  }),
+  new LoadJsonTask({
+    assets: ['./static/dummy-json.json'],
+  }),
+  new LoadScriptTask({
+    assets: ['./static/dummy-script.js'],
+  }),
+  new LoadHowlerAudioTask({
+    assets: ['./static/dummy-audio.{format}'],
+    format: ['mp3'],
+  }),
+];
+
+// Add event listeners
+taskLoader.addEventListener(TaskLoaderEvent.START, event => {
+  console.log('Start')
+});
+taskLoader.addEventListener(TaskLoaderEvent.UPDATE, event => {
+  console.log('Update', event.data.progress)
+});
+taskLoader.addEventListener(TaskLoaderEvent.COMPLETE, event => {
+  console.log('Complete')
+});
+taskLoader.addEventListener(TaskLoaderEvent.FAILED, event => {
+  console.log('Failure')
+});
+
+// Start the task loader
+taskLoader.loadTasks(tasks)
+  .then(() => {
+    console.log('All tasks have been loaded')
+  })
+  .catch(() => {
+    console.log('Something went wrong loading the tasks')
+  });</pre>
+    </div>
+  </div>
 </main>
 </body>
 <script src="./bundle.js"></script>
