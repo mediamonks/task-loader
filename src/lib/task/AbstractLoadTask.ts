@@ -10,7 +10,7 @@ export default abstract class LoadTask<T> extends EventDispatcher {
    * @description Array containing the batches of assets to be loaded
    * @type {Array}
    */
-  protected batches: Array<Array<{ src: string; index: number }>> = [];
+  protected batches: Array<Array<IBatch>> = [];
 
   /**
    * @description The default options for a task
@@ -152,7 +152,8 @@ export default abstract class LoadTask<T> extends EventDispatcher {
       // Push into the new batch
       this.batches[this.batches.length - 1].push({
         src,
-        index: index % this.options.batchSize,
+        index,
+        batchIndex: index % this.options.batchSize,
       });
     });
   }
@@ -177,7 +178,7 @@ export default abstract class LoadTask<T> extends EventDispatcher {
       return Promise.resolve(cachedItem);
     }
     return this.loadAsset(item.src, progress => {
-      batchProgress[item.index] = progress;
+      batchProgress[item.batchIndex] = progress;
 
       if (update) {
         update(
