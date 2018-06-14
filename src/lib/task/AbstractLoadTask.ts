@@ -30,7 +30,7 @@ export default abstract class LoadTask<T> extends EventDispatcher {
     options.assets = !Array.isArray(options.assets) ? [options.assets] : options.assets;
 
     // Merge the options
-    Object.assign(this.options, options);
+    this.options = Object.assign(this.options, options);
 
     // Create the batches
     this.createBatches();
@@ -203,5 +203,8 @@ export default abstract class LoadTask<T> extends EventDispatcher {
    */
   public dispose(): void {
     this.options = null;
+    this.batches = null;
+
+    super.dispose();
   }
 }

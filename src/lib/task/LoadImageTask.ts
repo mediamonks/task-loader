@@ -17,7 +17,14 @@ export default class LoadImageTask extends AbstractLoadTask<HTMLImageElement> {
   /**
    * @description Overwrite the default load options because we have extra configuration
    */
-  protected options: ILoadImageTaskOptions;
+  protected options: ILoadImageTaskOptions = {
+    crossOrigin: 'Use-Credentials',
+    assets: [],
+    batchSize: 1,
+    weight: 1,
+    cacheNameSpace: null,
+    cached: true,
+  };
 
   /**
    * @private
@@ -33,7 +40,7 @@ export default class LoadImageTask extends AbstractLoadTask<HTMLImageElement> {
         if (update !== undefined) update(1); // TODO: implement loading progress?
         resolve(image);
       };
-      image.crossOrigin = this.options.crossOrigin || 'Use-Credentials';
+      image.crossOrigin = this.options.crossOrigin;
       image.onerror = reject;
       image.src = src;
     });
