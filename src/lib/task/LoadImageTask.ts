@@ -1,4 +1,5 @@
 import AbstractLoadTask from '../task/AbstractLoadTask';
+import { ILoadTaskOptions } from '../interface/ILoadTaskOptions';
 
 /**
  * @description Load images in the TaskLoader
@@ -8,10 +9,16 @@ import AbstractLoadTask from '../task/AbstractLoadTask';
  *  new LoadImageTask({
  *      assets: ['path/to/image.jpg'],
  *      onAssetLoaded: result => console.log(result),
+ *      crossOrigin: 'Use-Credentials',
  *  })
  * ```
  */
 export default class LoadImageTask extends AbstractLoadTask<HTMLImageElement> {
+  /**
+   * @description Overwrite the default load options because we have extra configuration
+   */
+  protected options: ILoadImageTaskOptions;
+
   /**
    * @private
    * @method loadAsset
@@ -26,9 +33,16 @@ export default class LoadImageTask extends AbstractLoadTask<HTMLImageElement> {
         if (update !== undefined) update(1); // TODO: implement loading progress?
         resolve(image);
       };
-      image.crossOrigin = 'anonymous';
+      image.crossOrigin = this.options.crossOrigin || 'Use-Credentials';
       image.onerror = reject;
       image.src = src;
     });
   }
+}
+
+/**
+ * @description Howler has the option for multiple formats like mp3, ogg, mp4 etc
+ */
+export interface ILoadImageTaskOptions extends ILoadTaskOptions<HTMLImageElement> {
+  crossOrigin: string;
 }

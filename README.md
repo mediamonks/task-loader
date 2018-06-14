@@ -43,9 +43,9 @@ taskLoader.addEvents(TaskLoaderEvent.FAILURE, () => console.log('Failure during 
 
 // Load the tasks
 taskLoader.loadTasks([
-  new LoadImageTask({
+  new LoadJsonTask({
     // Array of strings or a single string with the path to the asset
-    assets: ['path/to/image-1.jpg', 'path/to/image-2.jpg'],
+    assets: ['path/to/file.json'],
     // The size of a batch, this is how many requests happen at the same time
     batchSize: 1,
     // The weight of the load task, the higher the number the more weight a task has on the
@@ -66,10 +66,13 @@ taskLoader.loadTasks([
   }),
   new LoadHowlerAudioTask({
     assets: ['path/to/audio.{format}}'],
+    // Define the formats of the file you've provided
     formats: ['mp3', 'ogg'],
   }),
-  new LoadJsonTask({
-    assets: ['path/to/file.json'],
+  new LoadImageTask({
+    assets: ['path/to/image-1.jpg', 'path/to/image-2.jpg'],
+    // Sometimes you might want change the image cross origin attribute, the default one is 'Use-Credentials'
+    crossOrigin: 'anonymous',
   }),
   new LoadScriptTask({
     assets: ['path/to/file.js'],
