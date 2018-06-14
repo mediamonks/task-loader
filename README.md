@@ -36,10 +36,10 @@ import {
 const taskLoader = new TaskLoader();
 
 // Add events to the task
-taskLoader.addEvents(TaskLoaderEvent.START, () => console.log('Start'));
-taskLoader.addEvents(TaskLoaderEvent.UPDATE, ({ data }) => console.log('Update', data.progress));
-taskLoader.addEvents(TaskLoaderEvent.COMPLETE, () => console.log('Complete'));
-taskLoader.addEvents(TaskLoaderEvent.FAILURE, () => console.log('Failure during loading'));
+taskLoader.addEventListener(TaskLoaderEvent.START, () => console.log('Start'));
+taskLoader.addEventListener(TaskLoaderEvent.UPDATE, ({ data }) => console.log('Update', data.progress));
+taskLoader.addEventListener(TaskLoaderEvent.COMPLETE, () => console.log('Complete'));
+taskLoader.addEventListener(TaskLoaderEvent.FAILURE, () => console.log('Failure during loading'));
 
 // Load the tasks
 taskLoader.loadTasks([
@@ -97,10 +97,10 @@ const task = new LoadVideoTask({
 });
 
 // Add events to the task
-task.addEvents(TaskLoaderEvent.START, () => console.log('Start'));
-task.addEvents(TaskLoaderEvent.UPDATE, ({ data }) => console.log('Update', data.progress));
-task.addEvents(TaskLoaderEvent.COMPLETE, () => console.log('Complete'));
-task.addEvents(TaskLoaderEvent.FAILURE, () => console.log('Failure during loading'));
+task.addEventListener(TaskLoaderEvent.START, () => console.log('Start'));
+task.addEventListener(TaskLoaderEvent.UPDATE, ({ data }) => console.log('Update', data.progress));
+task.addEventListener(TaskLoaderEvent.COMPLETE, () => console.log('Complete'));
+task.addEventListener(TaskLoaderEvent.FAILURE, () => console.log('Failure during loading'));
 
 task.load()
 .then(() => {
