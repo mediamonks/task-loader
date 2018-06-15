@@ -14,8 +14,6 @@ import { ILoadTaskOptions } from '../interface/ILoadTaskOptions';
  * ```
  */
 export default class LoadImageTask extends AbstractLoadTask<HTMLImageElement> {
-  protected options: ILoadImageTaskOptions;
-
   /**
    * @description Overwrite the default load options because we have extra configuration
    */
@@ -44,7 +42,7 @@ export default class LoadImageTask extends AbstractLoadTask<HTMLImageElement> {
         if (update !== undefined) update(1); // TODO: implement loading progress?
         resolve(image);
       };
-      image.crossOrigin = this.options.crossOrigin;
+      image.crossOrigin = (<ILoadImageTaskOptions>this.options).crossOrigin;
       image.onerror = reject;
       image.src = src;
     });
