@@ -14,17 +14,21 @@ import { ILoadTaskOptions } from '../interface/ILoadTaskOptions';
  * ```
  */
 export default class LoadImageTask extends AbstractLoadTask<HTMLImageElement> {
+  protected options: ILoadImageTaskOptions;
+
   /**
    * @description Overwrite the default load options because we have extra configuration
    */
-  protected options: ILoadImageTaskOptions = {
-    crossOrigin: 'Use-Credentials',
-    assets: [],
-    batchSize: 1,
-    weight: 1,
-    cacheNameSpace: null,
-    cached: true,
-  };
+  constructor(options: ILoadImageTaskOptions) {
+    super(
+      Object.assign(
+        {
+          crossOrigin: 'Use-Credentials',
+        },
+        options,
+      ),
+    );
+  }
 
   /**
    * @private

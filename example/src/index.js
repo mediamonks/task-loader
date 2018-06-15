@@ -64,7 +64,7 @@ new Vue({
   },
   mounted() {
     // Highlight the code
-    document.body.querySelectorAll('pre').forEach(element => {
+    Array.from(document.body.querySelectorAll('pre')).forEach(element => {
       hljs.highlightBlock(element);
     });
     this.taskLoader = new TaskLoader();
