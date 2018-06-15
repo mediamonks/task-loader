@@ -55,5 +55,5 @@ export default class LoadImageTask extends AbstractLoadTask<HTMLImageElement> {
  * @description Howler has the option for multiple formats like mp3, ogg, mp4 etc
  */
 export interface ILoadImageTaskOptions extends ILoadTaskOptions<HTMLImageElement> {
-  crossOrigin: string;
+  crossOrigin?: string;
 }
