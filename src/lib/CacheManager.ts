@@ -1,6 +1,6 @@
 import Disposable from 'seng-disposable';
 import sha1 from 'sha1';
-import bows from 'bows';
+import debug from 'debug';
 import { ICacheObject } from './interface/ICacheObject';
 
 export class CacheManager extends Disposable {
@@ -13,7 +13,7 @@ export class CacheManager extends Disposable {
   /**
    * @description Logger for displaying messages
    */
-  private log: bows = new bows('CacheManager');
+  private log: debug = debug('cacheManager');
 
   /**
    * @public
