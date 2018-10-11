@@ -76,7 +76,7 @@
     "chai": "^4.1.2",
     "coveralls": "^2.11.6",
     "cross-env": "^5.1.1",
-    "debug": "^4.1.0",
+    "debug": "^3.2.6",
     "eslint": "^4.13.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.9.0",
@@ -110,6 +110,6 @@
     "sha1": "^1.1.1"
   },
   "peerDependencies": {
-    "debug": "^4.1.0"
+    "debug": "^3.2.6"
   }
 }
