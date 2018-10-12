@@ -23,8 +23,7 @@ npm i -S task-loader
 ### Task loader usage
 
 ```ts
-import TaskLoader from 'task-loader';
-import {
+import TaskLoader, {
   LoadImageTask,
   LoadVideoTask,
   LoadHowlerAudioTask,
@@ -134,6 +133,20 @@ cacheManager.remove('path/to/video.mp4');
 // Remove assets within a namespace
 cacheManager.remove('foo');
 ```
+
+### Note
+Keep in mind when tree shaking a module it will include all other dependencies for all tasks in your project (this means including Howler). If you do not want this, please include theme separately:
+
+```typescript
+import TaskLoader from 'task-loader/lib/TaskLoader';
+import cacheManager from 'task-loader/lib/CacheManager';
+
+import LoadImageTask from 'task-loader/lib/task/LoadImageTask';
+import LoadVideoTask from 'task-loader/lib/task/LoadVideoTask';
+import LoadHowlerAudioTask from 'task-loader/lib/task/LoadHowlerAudioTask';
+import LoadJsonTask from 'task-loader/lib/task/LoadJsonTask';
+import LoadScriptTask from 'task-loader/lib/task/LoadScriptTask';
+``` 
 
 ## Example
 
