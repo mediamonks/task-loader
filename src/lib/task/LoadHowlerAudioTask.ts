@@ -15,9 +15,18 @@ import { ILoadTaskOptions } from '../interface/ILoadTaskOptions';
  */
 export default class LoadHowlerAudioTask extends AbstractLoadTask<Howl> {
   /**
-   * @description Overwrite the default load options because howler requires extra data
+   * @description Overwrite the default load options because we have extra configuration
    */
-  protected options: ILoadHowlerAudioTaskOptions;
+  constructor(options: ILoadHowlerAudioTaskOptions) {
+    super(
+      Object.assign(
+        {
+          format: [],
+        },
+        options,
+      ),
+    );
+  }
 
   /**
    * @private
@@ -28,7 +37,9 @@ export default class LoadHowlerAudioTask extends AbstractLoadTask<Howl> {
    */
   public loadAsset(src: string, update?: (progress: number) => void): Promise<Howl> {
     return new Promise((resolve: (howl: Howl) => void) => {
-      const sources = this.options.format.map(format => src.replace('{format}', format));
+      const sources = (<ILoadHowlerAudioTaskOptions>this.options).format.map(format =>
+        src.replace('{format}', format),
+      );
       const howl = new Howl({ src: sources });
 
       switch (howl.state()) {
@@ -53,7 +64,7 @@ export default class LoadHowlerAudioTask extends AbstractLoadTask<Howl> {
  * @description Howler has the option for multiple formats like mp3, ogg, mp4 etc
  */
 export interface ILoadHowlerAudioTaskOptions extends ILoadTaskOptions<Howl> {
-  format: Array<string>;
+  format?: Array<string>;
 }
 
 /**
