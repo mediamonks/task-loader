@@ -109,5 +109,8 @@
   },
   "peerDependencies": {
     "debug": "^3.2.6"
+  },
+  "volta": {
+    "node": "20.13.1"
   }
 }
