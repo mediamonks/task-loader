@@ -1,9 +1,7 @@
 /* global hljs */
 import Vue from 'vue/dist/vue.esm';
 
-import LoadHowlerAudioTask from '../../src/lib/task/LoadHowlerAudioTask';
 import LoadImageTask from '../../src/lib/task/LoadImageTask';
-import LoadJsonTask from '../../src/lib/task/LoadJsonTask';
 import LoadScriptTask from '../../src/lib/task/LoadScriptTask';
 import LoadVideoTask from '../../src/lib/task/LoadVideoTask';
 import TaskLoader from '../../src/lib/TaskLoader';
@@ -36,28 +34,11 @@ new Vue({
         },
       },
       {
-        constructor: LoadJsonTask,
-        label: 'LoadJsonTask',
-        progress: 0,
-        options: {
-          assets: ['./static/dummy-json.json'],
-        },
-      },
-      {
         constructor: LoadScriptTask,
         label: 'LoadScriptTask',
         progress: 0,
         options: {
           assets: ['./static/dummy-script.js'],
-        },
-      },
-      {
-        constructor: LoadHowlerAudioTask,
-        label: 'LoadHowlerAudioTask',
-        progress: 0,
-        options: {
-          assets: ['./static/dummy-audio.{format}'],
-          format: ['mp3'],
         },
       },
     ],
