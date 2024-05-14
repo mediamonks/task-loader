@@ -17,7 +17,7 @@ export default abstract class LoadTask<T> extends EventDispatcher {
    */
   protected options: ILoadTaskOptions<T> = {
     assets: [],
-    batchSize: 1,
+    batchSize: 10,
     weight: 1,
     cacheNameSpace: null,
     cached: true,
