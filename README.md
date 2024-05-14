@@ -2,11 +2,11 @@
 
 Class for loading assets
 
-[![Travis](https://img.shields.io/travis/larsvanbraam/task-loader.svg?maxAge=2592000)](https://travis-ci.org/larsvanbraam/task-loader)
-[![Code Climate](https://img.shields.io/codeclimate/github/larsvanbraam/task-loader.svg?maxAge=2592000)](https://codeclimate.com/github/larsvanbraam/task-loader)
-[![Coveralls](https://img.shields.io/coveralls/larsvanbraam/task-loader.svg?maxAge=2592000)](https://coveralls.io/github/larsvanbraam/task-loader?branch=master)
-[![npm](https://img.shields.io/npm/v/task-loader.svg?maxAge=2592000)](https://www.npmjs.com/package/task-loader)
-[![npm](https://img.shields.io/npm/dm/task-loader.svg?maxAge=2592000)](https://www.npmjs.com/package/task-loader)
+[![Travis](https://img.shields.io/travis/larsvanbraam/task-loader.svg?maxAge=2592000)](https://travis-ci.org/mediamonks/task-loader)
+[![Code Climate](https://img.shields.io/codeclimate/github/mediamonks/task-loader.svg?maxAge=2592000)](https://codeclimate.com/github/larsvanbraam/task-loader)
+[![Coveralls](https://img.shields.io/coveralls/mediamonks/task-loader.svg?maxAge=2592000)](https://coveralls.io/github/larsvanbraam/task-loader?branch=master)
+[![npm](https://img.shields.io/npm/v/@mediamonks/task-loader.svg?maxAge=2592000)](https://www.npmjs.com/package/@mediamonks/task-loader)
+[![npm](https://img.shields.io/npm/dm/task-loader.svg?maxAge=2592000)](https://www.npmjs.com/package/@mediamonks/task-loader)
 
 ## Installation
 
@@ -146,19 +146,19 @@ import LoadVideoTask from 'task-loader/lib/task/LoadVideoTask';
 import LoadHowlerAudioTask from 'task-loader/lib/task/LoadHowlerAudioTask';
 import LoadJsonTask from 'task-loader/lib/task/LoadJsonTask';
 import LoadScriptTask from 'task-loader/lib/task/LoadScriptTask';
-``` 
+```
 
 ## Example
 
 I've included an example setup where you can see the loader in action, to run the project follow these steps:
 
-- `git clone https://github.com/larsvanbraam/task-loader.git`
+- `git clone git@github.com:mediamonks/task-loader.git`
 - `cd task-loader/example`
-- `yarn`
-- `yarn dev`
+- `npm i`
+- `npm run dev`
 - Open your browser `localhost:8080`
 
-or click [this link](https://larsvanbraam.github.io/task-loader/example) to preview online
+or click [this link](https://mediamonks.github.io/task-loader/example) to preview online
 
 ## Documentation
 
@@ -184,18 +184,18 @@ cd task-loader
 Install dev dependencies:
 
 ```sh
-yarn
+npm i
 ```
 
 Use one of the following main scripts:
 
 ```sh
-yarn build            # build this project
-yarn dev              # run compilers in watch mode, both for babel and typescript
-yarn test             # run the unit tests incl coverage
-yarn test:dev         # run the unit tests in watch mode
-yarn lint             # run eslint and tslint on this project
-yarn doc              # generate typedoc documentation
+npm run build            # build this project
+npm run dev              # run compilers in watch mode, both for babel and typescript
+npm run test             # run the unit tests incl coverage
+npm run test:dev         # run the unit tests in watch mode
+npm run lint             # run eslint and tslint on this project
+npm run doc              # generate typedoc documentation
 ```
 
 When installing this module, it adds a pre-commit hook, that runs lint and prettier commands
