@@ -1,9 +1,12 @@
 {
-  "name": "task-loader",
-  "version": "0.1.17",
+  "name": "@mediamonks/task-loader",
+  "version": "0.2.0",
   "description": "Load assets like a boss",
   "main": "./index.js",
   "types": "./index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prepublishOnly": "npm-run-all -s validate build",
     "validate": "npm-run-all -p lint test",
@@ -43,8 +46,8 @@
   "pre-push": [
     "validate"
   ],
-  "author": "Lars van Braam <larsvanbraam@gmail.com> (larsvanbraam)",
-  "homepage": "https://github.com/larsvanbraam/task-loader",
+  "author": "frontend.monks",
+  "homepage": "https://github.com/mediamonks/task-loader",
   "license": "MIT",
   "keywords": [
     "seng",
@@ -53,11 +56,11 @@
     "assets"
   ],
   "bugs": {
-    "url": "https://github.com/larsvanbraam/task-loader/issues"
+    "url": "https://github.com/mediamonks/task-loader/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/larsvanbraam/task-loader.git"
+    "url": "git+ssh://git@github.com:mediamonks/task-loader.git"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.35",
