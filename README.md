@@ -26,7 +26,6 @@ npm i -S task-loader
 import TaskLoader, {
   LoadImageTask,
   LoadVideoTask,
-  LoadHowlerAudioTask,
   LoadJsonTask,
   LoadScriptTask,
 } from 'task-loader';
@@ -62,11 +61,6 @@ taskLoader.loadTasks([
   }),
   new LoadVideoTask({
     assets: ['path/to/video.mp4'],
-  }),
-  new LoadHowlerAudioTask({
-    assets: ['path/to/audio.{format}}'],
-    // Define the formats of the file you've provided
-    formats: ['mp3', 'ogg'],
   }),
   new LoadImageTask({
     assets: ['path/to/image-1.jpg', 'path/to/image-2.jpg'],
@@ -143,7 +137,6 @@ import cacheManager from 'task-loader/lib/CacheManager';
 
 import LoadImageTask from 'task-loader/lib/task/LoadImageTask';
 import LoadVideoTask from 'task-loader/lib/task/LoadVideoTask';
-import LoadHowlerAudioTask from 'task-loader/lib/task/LoadHowlerAudioTask';
 import LoadJsonTask from 'task-loader/lib/task/LoadJsonTask';
 import LoadScriptTask from 'task-loader/lib/task/LoadScriptTask';
 ```
@@ -172,7 +165,7 @@ and [Node.js](http://nodejs.org/) installed.
 Clone a copy of the repo:
 
 ```sh
-git clone https://github.com/larsvanbraam/task-loader.git
+git clone git@github.com:mediamonks/task-loader.git
 ```
 
 Change to the task-loader directory:
