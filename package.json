@@ -1,6 +1,6 @@
 {
   "name": "@mediamonks/task-loader",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Load assets like a boss",
   "main": "./index.js",
   "types": "./index.d.ts",
