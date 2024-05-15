@@ -2,6 +2,7 @@
 import Vue from 'vue/dist/vue.esm';
 
 import LoadImageTask from '../../src/lib/task/LoadImageTask';
+import LoadJsonTask from '../../src/lib/task/LoadJsonTask';
 import LoadScriptTask from '../../src/lib/task/LoadScriptTask';
 import LoadVideoTask from '../../src/lib/task/LoadVideoTask';
 import TaskLoader from '../../src/lib/TaskLoader';
@@ -31,6 +32,14 @@ new Vue({
         progress: 0,
         options: {
           assets: ['./static/dummy-video.mp4'],
+        },
+      },
+      {
+        constructor: LoadJsonTask,
+        label: 'LoadJsonTask',
+        progress: 0,
+        options: {
+          assets: ['./static/dummy-jsonx.json'],
         },
       },
       {
